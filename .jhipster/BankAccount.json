@@ -1,0 +1,51 @@
+{
+  "applications": ["flint"],
+  "changelogDate": "20220427013701",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "bank_account",
+  "fields": [
+    {
+      "fieldName": "accountNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "accountName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "balance",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "accountType",
+      "fieldType": "AccountType",
+      "fieldValues": "CHECKING (Checking),SAVINGS (Savings)"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "BankAccount",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "bankAccount",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "startDate",
+      "otherEntityName": "statements",
+      "otherEntityRelationshipName": "bankAccount",
+      "relationshipName": "statements",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

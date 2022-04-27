@@ -1,0 +1,29 @@
+{
+  "flintApp": {
+    "transactions": {
+      "home": {
+        "title": "Transactions",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Transactions",
+        "createOrEditLabel": "Crear o editar Transactions",
+        "notFound": "Ningún Transactions encontrado"
+      },
+      "created": "Un nuevo Transactions ha sido creado con el identificador {{ param }}",
+      "updated": "Un Transactions ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Transactions ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Transactions {{ id }}?"
+      },
+      "detail": {
+        "title": "Transactions"
+      },
+      "id": "ID",
+      "dateOfTransaction": "Date Of Transaction",
+      "typeOfTransaction": "Type Of Transaction",
+      "transactionAmount": "Transaction Amount",
+      "toAccountNumber": "To Account Number",
+      "fromAccountNumber": "From Account Number",
+      "statements": "Statements"
+    }
+  }
+}

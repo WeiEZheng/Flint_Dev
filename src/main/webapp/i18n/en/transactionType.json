@@ -1,0 +1,10 @@
+{
+  "flintApp": {
+    "TransactionType": {
+      "null": "",
+      "DEBIT": "Debit",
+      "CREDIT": "Credit",
+      "TRANSFER": "Transfer"
+    }
+  }
+}

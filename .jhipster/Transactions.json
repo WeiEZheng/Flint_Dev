@@ -1,0 +1,49 @@
+{
+  "applications": ["flint"],
+  "changelogDate": "20220427013703",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "transactions",
+  "fields": [
+    {
+      "fieldName": "dateOfTransaction",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "typeOfTransaction",
+      "fieldType": "TransactionType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "DEBIT (Debit),CREDIT (Credit),TRANSFER (Transfer)"
+    },
+    {
+      "fieldName": "transactionAmount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "toAccountNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fromAccountNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Transactions",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "statements",
+      "otherEntityRelationshipName": "transactions",
+      "relationshipName": "statements",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

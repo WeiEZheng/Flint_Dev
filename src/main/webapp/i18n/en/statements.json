@@ -1,0 +1,27 @@
+{
+  "flintApp": {
+    "statements": {
+      "home": {
+        "title": "Statements",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Statements",
+        "createOrEditLabel": "Create or edit a Statements",
+        "notFound": "No Statements found"
+      },
+      "created": "A new Statements is created with identifier {{ param }}",
+      "updated": "A Statements is updated with identifier {{ param }}",
+      "deleted": "A Statements is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Statements {{ id }}?"
+      },
+      "detail": {
+        "title": "Statements"
+      },
+      "id": "ID",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "bankAccount": "Bank Account",
+      "transactions": "Transactions"
+    }
+  }
+}

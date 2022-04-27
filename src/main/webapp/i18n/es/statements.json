@@ -1,0 +1,27 @@
+{
+  "flintApp": {
+    "statements": {
+      "home": {
+        "title": "Statements",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Statements",
+        "createOrEditLabel": "Crear o editar Statements",
+        "notFound": "Ningún Statements encontrado"
+      },
+      "created": "Un nuevo Statements ha sido creado con el identificador {{ param }}",
+      "updated": "Un Statements ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Statements ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Statements {{ id }}?"
+      },
+      "detail": {
+        "title": "Statements"
+      },
+      "id": "ID",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "bankAccount": "Bank Account",
+      "transactions": "Transactions"
+    }
+  }
+}

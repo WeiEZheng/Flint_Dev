@@ -1,0 +1,41 @@
+{
+  "applications": ["flint"],
+  "changelogDate": "20220427013702",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "statements",
+  "fields": [
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Statements",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "accountNumber",
+      "otherEntityName": "bankAccount",
+      "otherEntityRelationshipName": "statements",
+      "relationshipName": "bankAccount",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "transactions",
+      "otherEntityRelationshipName": "statements",
+      "relationshipName": "transactions",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

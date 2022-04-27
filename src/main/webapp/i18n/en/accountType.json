@@ -1,0 +1,9 @@
+{
+  "flintApp": {
+    "AccountType": {
+      "null": "",
+      "CHECKING": "Checking",
+      "SAVINGS": "Savings"
+    }
+  }
+}
