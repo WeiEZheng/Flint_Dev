@@ -12,6 +12,8 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { ITransactions } from 'app/shared/model/transactions.model';
 import { getEntities } from './transactions.reducer';
 
+import { LineChart, Line } from 'recharts';
+
 export const Transactions = (props: RouteComponentProps<{ url: string }>) => {
   const dispatch = useAppDispatch();
 
@@ -82,6 +84,11 @@ export const Transactions = (props: RouteComponentProps<{ url: string }>) => {
 
   return (
     <div>
+      <LineChart width={400} height={400} data={transactionsList}>
+    <Line type="monotone" dataKey="transactionAmount" stroke="#8884d8" strokeWidth={2} />
+      </LineChart>
+      
+      
       <h2 id="transactions-heading" data-cy="TransactionsHeading">
         <Translate contentKey="flintApp.transactions.home.title">Transactions</Translate>
         <div className="d-flex justify-content-end">
