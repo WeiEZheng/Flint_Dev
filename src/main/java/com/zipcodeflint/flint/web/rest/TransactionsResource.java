@@ -1,11 +1,15 @@
 package com.zipcodeflint.flint.web.rest;
 
 import com.zipcodeflint.flint.domain.Transactions;
+import com.zipcodeflint.flint.domain.enumeration.TransactionType;
 import com.zipcodeflint.flint.repository.TransactionsRepository;
 import com.zipcodeflint.flint.service.TransactionsService;
 import com.zipcodeflint.flint.web.rest.errors.BadRequestAlertException;
+
+import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -179,5 +183,68 @@ public class TransactionsResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
+    }
+
+    @GetMapping("/transactions/findByDate")
+    public ResponseEntity<List<Transactions>> findByDateOfTransaction(@org.springdoc.api.annotations.ParameterObject Pageable pageable,
+                                                                      @RequestParam(value = "exact", required = false) Instant dateOfTransaction,
+                                                                      @RequestParam(value = "start", required = false) Instant dateOfTransactionStart,
+                                                                      @RequestParam(value = "end", required = false) Instant dateOfTransactionEnd) {
+        log.debug("REST request to get a page of Transactions by date");
+        Page<Transactions> page;
+        if (dateOfTransaction != null) {
+            page = transactionsService.findByDateOfTransaction(dateOfTransactionStart, pageable);
+        } else if (dateOfTransactionStart != null && dateOfTransactionEnd != null){
+            page = transactionsService.findByDateOfTransactionIsBetween(dateOfTransactionStart, dateOfTransactionEnd, pageable);
+        } else {
+            page = transactionsService.findAll(pageable);
+        }
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping("/transactions/{accountNumber}")
+    public ResponseEntity<List<Transactions>> getTransactionsByAccount(@org.springdoc.api.annotations.ParameterObject Pageable pageable,
+                                                                @PathVariable String accountNumber,
+                                                                @RequestParam(value = "type", required = true) String typeOfRequest) {
+        log.debug("REST request to get a page of Transactions by account");
+        Page<Transactions> page;
+        if (typeOfRequest.equalsIgnoreCase("to"))
+            page = transactionsService.findByToAccountNumber(accountNumber, pageable);
+        else
+            page = transactionsService.findByFromAccountNumber(accountNumber, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping("/transactions/findByDate")
+    public ResponseEntity<List<Transactions>> getTransactionsByAccountByDate(@org.springdoc.api.annotations.ParameterObject Pageable pageable,
+                                                                      @RequestParam(value = "type", required = false) String typeOfRequest,
+                                                                      @RequestParam(value = "start", required = false) BigDecimal transactionAmountStart,
+                                                                      @RequestParam(value = "end", required = false) BigDecimal transactionAmountEnd) {
+        log.debug("REST request to get a page of Transactions by amount");
+        Page<Transactions> page;
+        if (typeOfRequest.equalsIgnoreCase("between") &&
+            transactionAmountStart != null && transactionAmountEnd != null) {
+            page = transactionsService.findByTransactionAmountIsBetween(transactionAmountStart, transactionAmountStart, pageable);
+        } else if (typeOfRequest.equalsIgnoreCase("more") && transactionAmountStart != null){
+            page = transactionsService.findByTransactionAmountIsGreaterThanEqual(transactionAmountStart, pageable);
+        }
+        else if (typeOfRequest.equalsIgnoreCase("less") && transactionAmountEnd != null) {
+            page = transactionsService.findByTransactionAmountIsGreaterThanEqual(transactionAmountStart, pageable);
+        } else {
+            page = transactionsService.findByTransactionAmountLessThanEqual(transactionAmountEnd, pageable);
+        }
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping("/transactions/{typeOfTransaction}")
+    public ResponseEntity<List<Transactions>> getTransactionsByType(@org.springdoc.api.annotations.ParameterObject Pageable pageable,
+                                                                    @PathVariable TransactionType typeOfTransaction) {
+        log.debug("REST request to get a page of Transactions");
+        Page<Transactions> page = transactionsService.findByTypeOfTransaction(typeOfTransaction, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 }

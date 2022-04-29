@@ -1,7 +1,12 @@
 package com.zipcodeflint.flint.service;
 
 import com.zipcodeflint.flint.domain.Transactions;
+
+import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Optional;
+
+import com.zipcodeflint.flint.domain.enumeration.TransactionType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -55,4 +60,21 @@ public interface TransactionsService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    Page<Transactions> findByDateOfTransaction(Instant dateOfTransaction, Pageable pageable);
+
+    Page<Transactions> findByDateOfTransactionIsBetween(Instant dateOfTransactionStart, Instant dateOfTransactionEnd, Pageable pageable);
+
+    Page<Transactions> findByFromAccountNumber(String fromAccountNumber, Pageable pageable);
+
+    Page<Transactions> findByToAccountNumber(String toAccountNumber, Pageable pageable);
+
+    Page<Transactions> findByTypeOfTransaction(TransactionType typeOfTransaction, Pageable pageable);
+
+    Page<Transactions> findByTransactionAmountIsBetween(BigDecimal transactionAmountStart,
+                                                        BigDecimal transactionAmountEnd, Pageable pageable);
+
+    Page<Transactions> findByTransactionAmountIsGreaterThanEqual(BigDecimal transactionAmount, Pageable pageable);
+
+    Page<Transactions> findByTransactionAmountLessThanEqual(BigDecimal transactionAmount, Pageable pageable);
 }
