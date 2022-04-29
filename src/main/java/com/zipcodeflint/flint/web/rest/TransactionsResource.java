@@ -217,8 +217,8 @@ public class TransactionsResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
-    @GetMapping("/transactions/findByDate")
-    public ResponseEntity<List<Transactions>> getTransactionsByAccountByDate(@org.springdoc.api.annotations.ParameterObject Pageable pageable,
+    @GetMapping("/transactions/findByAmount")
+    public ResponseEntity<List<Transactions>> getTransactionsByAmount(@org.springdoc.api.annotations.ParameterObject Pageable pageable,
                                                                       @RequestParam(value = "type", required = false) String typeOfRequest,
                                                                       @RequestParam(value = "start", required = false) BigDecimal transactionAmountStart,
                                                                       @RequestParam(value = "end", required = false) BigDecimal transactionAmountEnd) {
