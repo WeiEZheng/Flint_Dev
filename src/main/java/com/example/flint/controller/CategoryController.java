@@ -32,4 +32,6 @@ public class CategoryController {
         return category.map(response -> ResponseEntity.ok().body(response))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    @PostMapping("/category")
+    ResponseEntity<Category> createCategory(@Valid @RequestBody Category category)
 }
