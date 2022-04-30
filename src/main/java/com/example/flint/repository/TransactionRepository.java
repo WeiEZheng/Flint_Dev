@@ -1,6 +1,8 @@
 package com.example.flint.repository;
 
+import com.example.flint.model.Category;
 import com.example.flint.model.Transaction;
+import com.example.flint.model.User;
 import com.example.flint.model.enumeration.TransactionType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -19,6 +19,18 @@ public class TransactionServices {
     }
 
     public Transaction save(Transaction transaction) {
+        transaction.setDateOfTransaction(Instant.now());
+        if (transaction.getTypeOfTransaction().equals(TransactionType.TRANSFER)){
+            Transaction transactionCopy = new Transaction();
+            transaction.setTypeOfTransaction(TransactionType.DEBIT);
+            transactionCopy.setTypeOfTransaction(TransactionType.CREDIT);
+            transactionCopy.setFromAccountNumber(transaction.getToAccountNumber());
+            transactionCopy.setToAccountNumber(transaction.getFromAccountNumber());
+            transactionCopy.setDateOfTransaction(transaction.getDateOfTransaction());
+            transactionCopy.setCategory(transaction.getCategory());
+            transactionCopy.setTransactionAmount(transaction.getTransactionAmount());
+            transactionRepository.save(transactionCopy);
+        }
         return transactionRepository.save(transaction);
     }
 
@@ -45,7 +57,6 @@ public class TransactionServices {
                     if (transaction.getFromAccountNumber() != null) {
                         existingTransactions.setFromAccountNumber(transaction.getFromAccountNumber());
                     }
-
                     return existingTransactions;
                 })
                 .map(this::save);
