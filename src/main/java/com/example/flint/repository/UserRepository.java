@@ -1,4 +1,4 @@
 package com.example.flint.repository;
 
-public class FillerRepository {
+public class UserRepository {
 }
