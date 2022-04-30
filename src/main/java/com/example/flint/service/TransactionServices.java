@@ -3,12 +3,14 @@ package com.example.flint.service;
 import com.example.flint.model.Transaction;
 import com.example.flint.model.enumeration.TransactionType;
 import com.example.flint.repository.TransactionRepository;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TransactionServices {
     private final TransactionRepository transactionRepository;
 
