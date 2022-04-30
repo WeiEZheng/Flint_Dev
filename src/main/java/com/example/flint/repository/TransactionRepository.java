@@ -30,4 +30,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     List<Transaction> findByTransactionAmountIsGreaterThanEqual(BigDecimal transactionAmount);
 
     List<Transaction> findByTransactionAmountLessThanEqual(BigDecimal transactionAmount);
+
+    List<Transaction> findByCategory_Id(Long id);
 }

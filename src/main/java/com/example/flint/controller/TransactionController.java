@@ -114,5 +114,11 @@ public class TransactionController {
                 .build();
     }
 
+    @GetMapping("/transactions")
+    public ResponseEntity<List<Transaction>> getTransactionByCategory_Id(@@RequestParam (value = "category") Long id) {
+        List<Transaction> list = transactionServices.findByCategory_Id(id);
+        return ResponseEntity.ok().body(list);
+    }
+
     // todo: need to do update and partial update
 }

@@ -106,4 +106,8 @@ public class TransactionServices {
     public List<Transaction> findByTransactionAmountLessThanEqual(BigDecimal transactionAmount) {
         return transactionRepository.findByTransactionAmountLessThanEqual(transactionAmount);
     }
+
+    public List<Transaction> findByCategory_Id(Long id) {
+        return transactionRepository.findByCategory_Id(id);
+    }
 }
