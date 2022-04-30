@@ -31,13 +31,69 @@ public class Transaction {
     private BigDecimal transactionAmount;
 
     @Column(name = "to_account_number")
-    private String toAccountNumber;
+    private Long toAccountNumber;
 
     @NotNull
     @Column(name = "from_account_number", nullable = false)
-    private String fromAccountNumber;
+    private Long fromAccountNumber;
 
-//    @ManyToOne
-//    @JsonIgnoreProperties(value = { "bankAccount", "transactions" }, allowSetters = true)
-//    private Statements statements;
+    @ManyToMany
+    @Column(name = "category")
+    private Category category;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Instant getDateOfTransaction() {
+        return dateOfTransaction;
+    }
+
+    public void setDateOfTransaction(Instant dateOfTransaction) {
+        this.dateOfTransaction = dateOfTransaction;
+    }
+
+    public TransactionType getTypeOfTransaction() {
+        return typeOfTransaction;
+    }
+
+    public void setTypeOfTransaction(TransactionType typeOfTransaction) {
+        this.typeOfTransaction = typeOfTransaction;
+    }
+
+    public BigDecimal getTransactionAmount() {
+        return transactionAmount;
+    }
+
+    public void setTransactionAmount(BigDecimal transactionAmount) {
+        this.transactionAmount = transactionAmount;
+    }
+
+    public Long getToAccountNumber() {
+        return toAccountNumber;
+    }
+
+    public void setToAccountNumber(Long toAccountNumber) {
+        this.toAccountNumber = toAccountNumber;
+    }
+
+    public Long getFromAccountNumber() {
+        return fromAccountNumber;
+    }
+
+    public void setFromAccountNumber(Long fromAccountNumber) {
+        this.fromAccountNumber = fromAccountNumber;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
