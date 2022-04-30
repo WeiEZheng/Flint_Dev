@@ -20,6 +20,7 @@ public class CategoryController {
 
     @GetMapping("/categories")
     Collection<Category> categories(){
+        log.info("Getting all Categories");
         return categoryRepository.findAll();
     }
 }
