@@ -115,7 +115,7 @@ public class TransactionController {
     }
 
     @GetMapping("/transactions")
-    public ResponseEntity<List<Transaction>> getTransactionByCategory_Id(@@RequestParam (value = "category") Long id) {
+    public ResponseEntity<List<Transaction>> getTransactionByCategory_Id(@RequestParam (value = "category") Long id) {
         List<Transaction> list = transactionServices.findByCategory_Id(id);
         return ResponseEntity.ok().body(list);
     }
