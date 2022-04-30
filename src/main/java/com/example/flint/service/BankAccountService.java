@@ -3,11 +3,13 @@ package com.example.flint.service;
 import com.example.flint.model.BankAccount;
 import com.example.flint.repository.BankAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class BankAccountService {
 
     @Autowired
