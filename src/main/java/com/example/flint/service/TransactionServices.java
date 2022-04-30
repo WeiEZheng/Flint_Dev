@@ -19,6 +19,7 @@ public class TransactionServices {
     }
 
     public Transaction save(Transaction transaction) {
+        transaction.setDateOfTransaction(Instant.now());
         return transactionRepository.save(transaction);
     }
 
