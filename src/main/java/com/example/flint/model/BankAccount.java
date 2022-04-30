@@ -1,5 +1,7 @@
 package com.example.flint.model;
 
+import com.example.flint.model.enumeration.AccountType;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -17,9 +19,9 @@ public class BankAccount {
     BigDecimal balance;
 
     @Column(name="accountType")
-    Enum accountType;
+    AccountType accountType;
 
-    public BankAccount(Long id, String accountName, BigDecimal balance, Enum accountType) {
+    public BankAccount(Long id, String accountName, BigDecimal balance, AccountType accountType) {
         this.id = id;
         this.accountName = accountName;
         this.balance = balance;
@@ -53,11 +55,12 @@ public class BankAccount {
         this.balance = balance;
     }
 
-    public Enum getAccountType() {
+
+    public AccountType getAccountType() {
         return accountType;
     }
 
-    public void setAccountType(Enum accountType) {
+    public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
 }
