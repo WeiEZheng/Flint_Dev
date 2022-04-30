@@ -3,6 +3,7 @@ package com.example.flint.model;
 import lombok.*;
 import javax.persistence.*;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Data
