@@ -5,18 +5,14 @@ import com.example.flint.model.BankAccount;
 
 import com.example.flint.service.BankAccountService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 @Slf4j
 @RestController
 public class BankAccountController {
@@ -47,6 +43,14 @@ public class BankAccountController {
             return new ResponseEntity<List<BankAccount>>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<BankAccount>>(bankAccountList, HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/bankaccount/{id}", method = RequestMethod.GET)
+    public ResponseEntity<BankAccount> get(@PathVariable("id") Long id) {
+        log.info("Getting bank account");
+        Optional<BankAccount> bankAccount = bankAccountServe.getBankAccount(id);
+        return bankAccount.map(response -> ResponseEntity.ok().body(response))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
 
