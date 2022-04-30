@@ -1,21 +1,19 @@
 package com.example.flint.model;
 
 import lombok.*;
-import javax.persistence.*;
-import java.util.Set;
 
-@AllArgsConstructor
+import javax.persistence.*;
+
 @NoArgsConstructor
 @Entity
 @Data
-@Table(name="user")
-public class User {
+@Table(name="category")
+public class Category {
     @Id
     @GeneratedValue
     private Long id;
     private String name;
-    private String email;
 
-    @OneToMany
-    private Set<Category> categories;
+    @ManyToOne
+    private User user;
 }
