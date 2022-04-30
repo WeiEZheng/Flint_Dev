@@ -1,14 +1,21 @@
 package com.example.flint.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name="bankAccount")
 public class BankAccount {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     Long id;
+
+    @Column(name="accountName")
+    String accountName = "";
+
+    @Column(name="balance")
+    BigDecimal balance;
+
+    @Column(name="accountType")
+    Enum accountType;
 }
