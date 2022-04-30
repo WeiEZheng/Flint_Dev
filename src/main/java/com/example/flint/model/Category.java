@@ -3,6 +3,7 @@ package com.example.flint.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @NoArgsConstructor
 @Entity
@@ -14,5 +15,6 @@ public class Category {
     private Long id;
     private String name;
 
-
+    @OneToMany
+    private Set<Transaction> transaction;
 }

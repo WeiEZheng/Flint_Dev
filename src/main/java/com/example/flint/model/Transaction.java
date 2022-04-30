@@ -37,8 +37,7 @@ public class Transaction {
     @Column(name = "from_account_number", nullable = false)
     private Long fromAccountNumber;
 
-    @ManyToMany
-    @Column(name = "category")
+    @ManyToOne
     private Category category;
 
     @ManyToOne
