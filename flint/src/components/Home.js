@@ -8,6 +8,7 @@ class Home extends Component {
     return (
       <div>
         <NavigationBar/>
+        <p> Hello Moto</p>
       </div>
 
     );
