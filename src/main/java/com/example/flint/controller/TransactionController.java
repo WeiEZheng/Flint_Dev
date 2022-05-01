@@ -30,7 +30,7 @@ public class TransactionController {
         this.transactionRepository = transactionRepository;
     }
 
-    @PostMapping("/transaction")
+    @PostMapping("/transactions")
     public ResponseEntity<Transaction> createTransaction(@Validated @RequestBody Transaction transaction) throws URISyntaxException {
         if (transaction.getId() != null) {
 //            need to throw exception for existing entity
@@ -42,7 +42,7 @@ public class TransactionController {
                 .body(result);
     }
 
-    @GetMapping("/transaction")
+    @GetMapping("/transactions")
     public ResponseEntity<List<Transaction>> getAllTransactions() {
         List<Transaction> listOfAllTransactions = transactionServices.findAll();
         return ResponseEntity.ok().body(listOfAllTransactions);
@@ -54,25 +54,33 @@ public class TransactionController {
         return ResponseEntity.ok().body(transaction.get());
     }
 
-
-    @GetMapping("/transactions/findByDate")
-    public ResponseEntity<List<Transaction>> getTransactionsDateOfTransaction(@RequestParam(value = "exact", required = false) Instant dateOfTransaction,
-                                                                     @RequestParam(value = "start", required = false) Instant dateOfTransactionStart,
-                                                                     @RequestParam(value = "end", required = false) Instant dateOfTransactionEnd) {
+    //todo need to fix to use just month, day, and year
+    @GetMapping("/bankAccount/{accountNumber}/transactions/findByDate")
+    public ResponseEntity<List<Transaction>> getTransactionsDateOfTransaction(
+            @PathVariable(value = "accountNumber") Long accountId,
+            @RequestParam(value = "exact", required = false) Instant dateOfTransaction,
+            @RequestParam(value = "start", required = false) Instant dateOfTransactionStart,
+            @RequestParam(value = "end", required = false) Instant dateOfTransactionEnd) {
         List<Transaction> list;
         if (dateOfTransaction != null) {
-            list = transactionServices.findByDateOfTransaction(dateOfTransactionStart);
+            list = transactionServices.findByDateOfTransaction(
+                    accountId,
+                    dateOfTransactionStart);
         } else if (dateOfTransactionStart != null && dateOfTransactionEnd != null){
-            list = transactionServices.findByDateOfTransactionIsBetween(dateOfTransactionStart, dateOfTransactionEnd);
+            list = transactionServices.findByDateOfTransactionIsBetween(
+                    accountId,
+                    dateOfTransactionStart,
+                    dateOfTransactionEnd);
         } else {
-            list = transactionServices.findAll();
+            list = transactionServices.findByToAccountNumber(accountId);
         }
         return ResponseEntity.ok().body(list);
     }
 
-    @GetMapping("/transactions/{accountNumber}")
-    public ResponseEntity<List<Transaction>> getTransactionsByAccount(@PathVariable Long accountNumber,
-                                                                      @RequestParam(value = "type", defaultValue = "to") String typeOfRequest) {
+    @GetMapping("/bankAccount/{accountNumber}/transactions")
+    public ResponseEntity<List<Transaction>> getTransactionsByAccount(
+            @PathVariable Long accountNumber,
+            @RequestParam(value = "type", defaultValue = "to") String typeOfRequest) {
         List<Transaction> list;
         if (typeOfRequest.equalsIgnoreCase("to"))
             list = transactionServices.findByToAccountNumber(accountNumber);
@@ -81,42 +89,62 @@ public class TransactionController {
         return ResponseEntity.ok().body(list);
     }
 
-    @GetMapping("/transactions/findByAmount")
-    public ResponseEntity<List<Transaction>> getTransactionsByAmount(@RequestParam(value = "type", required = false) String typeOfRequest,
-                                                                     @RequestParam(value = "start", required = false) BigDecimal transactionAmountStart,
-                                                                     @RequestParam(value = "end", required = false) BigDecimal transactionAmountEnd) {
+    @GetMapping("/bankAccount/{accountNumber}/transactions/findByAmount/")
+    public ResponseEntity<List<Transaction>> getTransactionsByAmount(
+            @PathVariable(value = "accountNumber") Long accountId,
+            @RequestParam(value = "type", required = false) String typeOfRequest,
+            @RequestParam(value = "start", required = false) BigDecimal transactionAmountStart,
+            @RequestParam(value = "end", required = false) BigDecimal transactionAmountEnd) {
         List<Transaction> list;
         if (typeOfRequest.equalsIgnoreCase("between") &&
                 transactionAmountStart != null && transactionAmountEnd != null) {
-            list = transactionServices.findByTransactionAmountIsBetween(transactionAmountStart, transactionAmountStart);
+            list = transactionServices.findByTransactionAmountIsBetween(
+                    accountId,
+                    transactionAmountStart,
+                    transactionAmountStart);
         } else if (typeOfRequest.equalsIgnoreCase("more") && transactionAmountStart != null){
-            list = transactionServices.findByTransactionAmountIsGreaterThanEqual(transactionAmountStart);
+            list = transactionServices.findByTransactionAmountIsGreaterThanEqual(
+                    accountId,
+                    transactionAmountStart);
         }
         else if (typeOfRequest.equalsIgnoreCase("less") && transactionAmountEnd != null) {
-            list = transactionServices.findByTransactionAmountIsGreaterThanEqual(transactionAmountStart);
+            list = transactionServices.findByTransactionAmountLessThanEqual(
+                    accountId,
+                    transactionAmountStart);
         } else {
-            list = transactionServices.findByTransactionAmountLessThanEqual(transactionAmountEnd);
+            list = transactionServices.findByTransactionAmountLessThanEqual(
+                    accountId,
+                    transactionAmountEnd);
         }
         return ResponseEntity.ok().body(list);
     }
 
-    @GetMapping("/transactions/{typeOfTransaction}")
-    public ResponseEntity<List<Transaction>> getTransactionByType(@PathVariable TransactionType typeOfTransaction) {
-        List<Transaction> list = transactionServices.findByTypeOfTransaction(typeOfTransaction);
+    @GetMapping("/bankAccount/{accountNumber}/transactions/{typeOfTransaction}")
+    public ResponseEntity<List<Transaction>> getTransactionByType(
+            @PathVariable(value = "accountNumber") Long accountId,
+            @PathVariable(value = "typeOfTransaction") TransactionType typeOfTransaction) {
+        List<Transaction> list = transactionServices.findByTypeOfTransaction(
+                accountId,
+                typeOfTransaction);
         return ResponseEntity.ok().body(list);
     }
 
-    @DeleteMapping("/transactions/{id}")
-    public ResponseEntity<Void> deleteTransaction(@PathVariable Long id) {
+    @DeleteMapping("/bankAccount/{accountNumber}/transactions/{id}")
+    public ResponseEntity<Void> deleteTransaction(
+            @PathVariable Long id) {
         transactionServices.delete(id);
         return ResponseEntity
                 .noContent()
                 .build();
     }
 
-    @GetMapping("/transactions")
-    public ResponseEntity<List<Transaction>> getTransactionByCategory_Id(@RequestParam (value = "category") Long id) {
-        List<Transaction> list = transactionServices.findByCategory_Id(id);
+    @GetMapping("/bankAccount/{accountNumber}/transactions/findByCategory")
+    public ResponseEntity<List<Transaction>> getTransactionByCategory_Id(
+            @PathVariable(value = "accountNumber") Long accountId,
+            @RequestParam (value = "category") Long id) {
+        List<Transaction> list = transactionServices.findByCategory_Id(
+                accountId,
+                id);
         return ResponseEntity.ok().body(list);
     }
 
