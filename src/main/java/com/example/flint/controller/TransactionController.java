@@ -138,7 +138,7 @@ public class TransactionController {
                 .build();
     }
 
-    @GetMapping("/bankAccount/{accountNumber}/transactions")
+    @GetMapping("/bankAccount/{accountNumber}/transactions/findByCategory")
     public ResponseEntity<List<Transaction>> getTransactionByCategory_Id(
             @PathVariable(value = "accountNumber") Long accountId,
             @RequestParam (value = "category") Long id) {
