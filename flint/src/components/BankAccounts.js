@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-
-class BankAccounts extends React.Component {
+class BankAccounts extends Component {
 
 constructor(props) {
 super(props);
