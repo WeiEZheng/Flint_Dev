@@ -29,7 +29,7 @@ public class CategoryController {
         log.info("Getting all Categories");
         return categoryRepository.findAll();
     }
-    @GetMapping("category/{id}")
+    @GetMapping("/category/{id}")
     ResponseEntity<?> getCategory(@PathVariable Long id){
         log.info("Getting category item by {}", id);
 
