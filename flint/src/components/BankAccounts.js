@@ -1,20 +1,19 @@
-import React, {Component} from 'react';
-class BankAccounts extends Component {
+import React from 'react';
 
-constructor(props) {
-super(props);
-this.state = {bankAccounts: [], isLoading: true};
-this.remove = this.remove.bind(this);
-}
 
-   componentDidMount() {
-    this.setState({isLoading: true});
+class BankAccounts extends React.Component {
 
-    fetch('/api/bankaccount')
-
-    .then(response => response.json())
-    .then(data => this.setState({bankAccounts: data, isLoading: false}));
+  state = {
+    isLoading: true,
+    bankAccounts: []
   }
+
+  async componentDidMount(){
+    const response = await fetch('/bankaccount')
+    const body = await response.json();
+    this.setState({bankAccounts: body, isLoading:false});
+  }
+
 
   render() {
     const {bankAccounts, isLoading} = this.state;
@@ -25,17 +24,19 @@ this.remove = this.remove.bind(this);
 
     return (
       <div>
-
             <h2>Bank Accounts</h2>
             {bankAccounts.map(bankAccount =>
               <div key={bankAccount.id}>
-                {bankAccount.name}
+            <ul>
+
+            <li>    {bankAccount.accountName}</li>
+            </ul>
               </div>
             )}
 
       </div>
     );
-  }
+  };
 }
 
 export default BankAccounts;
