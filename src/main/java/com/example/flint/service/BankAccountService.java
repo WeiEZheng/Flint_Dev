@@ -45,4 +45,11 @@ public class BankAccountService {
         return false;
     }
 
+    //Deposit method
+    public BigDecimal deposit(Long id, BigDecimal input){
+        BankAccount bankAccount = bankAccountRepo.getById(id);
+        bankAccount.setBalance(bankAccount.getBalance().add(input));
+        return bankAccount.getBalance();
+    }
+
 }
