@@ -9,7 +9,7 @@ class BankAccounts extends React.Component {
   }
 
   async componentDidMount(){
-    const response = await fetch('/bankaccount')
+    const response = await fetch('api/bankaccount')
     const body = await response.json();
     this.setState({bankAccounts: body, isLoading:false});
   }

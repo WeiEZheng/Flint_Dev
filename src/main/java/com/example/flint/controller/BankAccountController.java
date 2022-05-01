@@ -17,6 +17,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
+@RequestMapping("/api")
 public class BankAccountController {
 
     @Autowired
