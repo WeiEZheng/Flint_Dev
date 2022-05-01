@@ -23,7 +23,7 @@ return (<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
                         <a class="nav-link" href="#">Transactions</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link disabled">Expense Tracker</a>
+                        <a class="nav-link" href="#">Expense Tracker</a>
                       </li>
                     </ul>
                   </div>
