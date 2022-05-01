@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import NavigationBar from './components/NavigationBar.js';
 
 class Category extends Component{
   state = {
@@ -8,9 +9,28 @@ class Category extends Component{
 
   async componentDidMount(){
     const response = await fetch('api/categories')
+    const body = await response.json();
+    this.setState({Categories: body, isLoading:false});
   }
   render(){
-    return( );
+    const{Categories, isLoading} = this.state;
+    if(isLoading)
+      return(<div>Loading...</div> );
+
+    return (
+      <div>
+        {/*Every category should return a div*/}
+        <h2>Categories</h2>
+        {
+          Categories.map(category =>
+            <div id={category.id}>
+              {category.name}
+            </div>
+          )
+        }
+      </div>
+    )
+
   }
 }
 export default Category;

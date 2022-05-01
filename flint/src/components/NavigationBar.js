@@ -1,5 +1,6 @@
 import React from 'react';
 import brandLogo from '../../src/static/images/brandLogo.png';
+
 class NavigationBar extends React.Component {
 
 
@@ -14,7 +15,7 @@ return (<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
                   <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/home">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#">Accounts</a>
@@ -23,7 +24,7 @@ return (<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
                         <a class="nav-link" href="#">Transactions</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">Expense Tracker</a>
+                        <a class="nav-link" href="/expenses">Expense Tracker</a>
                       </li>
                     </ul>
                   </div>
