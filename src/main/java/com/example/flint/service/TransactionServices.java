@@ -14,18 +14,16 @@ import java.util.Optional;
 
 @Service
 public class TransactionServices {
-    private final TransactionRepository transactionRepository;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
 
     @Autowired
     private BankAccountRepository bankAccountRepository;
 
-    public TransactionServices(TransactionRepository transactionRepository) {
-        this.transactionRepository = transactionRepository;
-    }
 
     public Transaction save(Transaction transaction) {
         transaction.setDateOfTransaction(Instant.now());
-
         if (transaction.getTypeOfTransaction().equals(TransactionType.TRANSFER)){
             Transaction transactionCopy = new Transaction();
             transaction.setTypeOfTransaction(TransactionType.DEBIT);
