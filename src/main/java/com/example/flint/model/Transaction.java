@@ -34,7 +34,7 @@ public class Transaction {
     private Long toAccountNumber;
 
     @NotNull
-    @Column(name = "from_account_number", nullable = false)
+    @Column(name = "from_account_number")
     private Long fromAccountNumber;
 
     @ManyToOne
@@ -43,8 +43,8 @@ public class Transaction {
     @ManyToOne
     private User user;
 
-//    @ManyToOne
-//    private BankAccount bankAccount;
+    @ManyToOne
+    private BankAccount bankAccount;
 
     public Long getId() {
         return id;

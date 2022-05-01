@@ -2,7 +2,9 @@ package com.example.flint.service;
 
 import com.example.flint.model.Transaction;
 import com.example.flint.model.enumeration.TransactionType;
+import com.example.flint.repository.BankAccountRepository;
 import com.example.flint.repository.TransactionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -14,12 +16,16 @@ import java.util.Optional;
 public class TransactionServices {
     private final TransactionRepository transactionRepository;
 
+    @Autowired
+    private BankAccountRepository bankAccountRepository;
+
     public TransactionServices(TransactionRepository transactionRepository) {
         this.transactionRepository = transactionRepository;
     }
 
     public Transaction save(Transaction transaction) {
         transaction.setDateOfTransaction(Instant.now());
+
         if (transaction.getTypeOfTransaction().equals(TransactionType.TRANSFER)){
             Transaction transactionCopy = new Transaction();
             transaction.setTypeOfTransaction(TransactionType.DEBIT);
@@ -74,12 +80,22 @@ public class TransactionServices {
         transactionRepository.deleteById(id);
     }
 
-    public List<Transaction> findByDateOfTransaction(Instant dateOfTransaction) {
-        return transactionRepository.findByDateOfTransaction(dateOfTransaction);
+    public List<Transaction> findByDateOfTransaction(
+            Long accountId,
+            Instant dateOfTransaction) {
+        return transactionRepository.findByBankAccount_IdAndDateOfTransaction(
+                accountId,
+                dateOfTransaction);
     }
 
-    public List<Transaction> findByDateOfTransactionIsBetween(Instant dateOfTransactionStart, Instant dateOfTransactionEnd) {
-        return transactionRepository.findByDateOfTransactionIsBetween(dateOfTransactionStart,dateOfTransactionEnd);
+    public List<Transaction> findByDateOfTransactionIsBetween(
+            Long accountId,
+            Instant dateOfTransactionStart,
+            Instant dateOfTransactionEnd) {
+        return transactionRepository.findByBankAccount_IdAndDateOfTransactionIsBetween(
+                accountId,
+                dateOfTransactionStart,
+                dateOfTransactionEnd);
     }
 
     public List<Transaction> findByFromAccountNumber(Long fromAccountNumber) {
@@ -90,24 +106,42 @@ public class TransactionServices {
         return transactionRepository.findByToAccountNumber(toAccountNumber);
     }
 
-    public List<Transaction> findByTypeOfTransaction(TransactionType typeOfTransaction) {
-        return transactionRepository.findByTypeOfTransaction(typeOfTransaction);
+    public List<Transaction> findByTypeOfTransaction(
+            Long id,
+            TransactionType typeOfTransaction) {
+        return transactionRepository.findByBankAccount_IdAndTypeOfTransaction(
+                id,
+                typeOfTransaction);
     }
 
-    public List<Transaction> findByTransactionAmountIsBetween(BigDecimal transactionAmountStart,
+    public List<Transaction> findByTransactionAmountIsBetween(Long id,
+                                                              BigDecimal transactionAmountStart,
                                                               BigDecimal transactionAmountEnd) {
-        return transactionRepository.findByTransactionAmountIsBetween(transactionAmountStart,transactionAmountEnd);
+        return transactionRepository.findByBankAccount_IdAndTransactionAmountIsBetween(
+                id,
+                transactionAmountStart,
+                transactionAmountEnd);
     }
 
-    public List<Transaction> findByTransactionAmountIsGreaterThanEqual(BigDecimal transactionAmount) {
-        return transactionRepository.findByTransactionAmountIsGreaterThanEqual(transactionAmount);
+    public List<Transaction> findByTransactionAmountIsGreaterThanEqual(
+            Long id,
+            BigDecimal transactionAmount) {
+        return transactionRepository.findByBankAccount_IdAndTransactionAmountIsGreaterThanEqual(id, transactionAmount);
     }
 
-    public List<Transaction> findByTransactionAmountLessThanEqual(BigDecimal transactionAmount) {
-        return transactionRepository.findByTransactionAmountLessThanEqual(transactionAmount);
+    public List<Transaction> findByTransactionAmountLessThanEqual(
+            Long bankId,
+            BigDecimal transactionAmount) {
+        return transactionRepository.findByBankAccount_IdAndTransactionAmountLessThanEqual(
+                bankId,
+                transactionAmount);
     }
 
-    public List<Transaction> findByCategory_Id(Long id) {
-        return transactionRepository.findByCategory_Id(id);
+    public List<Transaction> findByCategory_Id(
+            Long bankId,
+            Long categoryId) {
+        return transactionRepository.findByBankAccount_IdAndCategory_Id(
+                bankId,
+                categoryId);
     }
 }

@@ -13,23 +13,27 @@ import java.util.List;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
-    List<Transaction> findByDateOfTransaction(Instant dateOfTransaction);
+    List<Transaction> findByBankAccount_IdAndDateOfTransaction(Long id, Instant dateOfTransaction);
 
-    List<Transaction> findByDateOfTransactionIsBetween(Instant dateOfTransactionStart,
-                                                       Instant dateOfTransactionEnd);
+    List<Transaction> findByBankAccount_IdAndDateOfTransactionIsBetween(
+            Long id,
+            Instant dateOfTransactionStart,
+            Instant dateOfTransactionEnd);
 
     List<Transaction> findByFromAccountNumber(Long fromAccountNumber);
 
     List<Transaction> findByToAccountNumber(Long toAccountNumber);
 
-    List<Transaction> findByTypeOfTransaction(TransactionType typeOfTransaction);
+    List<Transaction> findByBankAccount_IdAndTypeOfTransaction(Long id, TransactionType typeOfTransaction);
 
-    List<Transaction> findByTransactionAmountIsBetween(BigDecimal transactionAmountStart,
-                                                       BigDecimal transactionAmountEnd);
+    List<Transaction> findByBankAccount_IdAndTransactionAmountIsBetween(
+            Long id,
+            BigDecimal transactionAmountStart,
+            BigDecimal transactionAmountEnd);
 
-    List<Transaction> findByTransactionAmountIsGreaterThanEqual(BigDecimal transactionAmount);
+    List<Transaction> findByBankAccount_IdAndTransactionAmountIsGreaterThanEqual(Long id, BigDecimal transactionAmount);
 
-    List<Transaction> findByTransactionAmountLessThanEqual(BigDecimal transactionAmount);
+    List<Transaction> findByBankAccount_IdAndTransactionAmountLessThanEqual(Long id, BigDecimal transactionAmount);
 
-    List<Transaction> findByCategory_Id(Long id);
+    List<Transaction> findByBankAccount_IdAndCategory_Id(Long id, Long id1);
 }
