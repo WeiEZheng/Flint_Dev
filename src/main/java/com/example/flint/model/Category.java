@@ -1,5 +1,6 @@
 package com.example.flint.model;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,6 +14,8 @@ public class Category {
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotNull
     private String name;
 
     @OneToMany
