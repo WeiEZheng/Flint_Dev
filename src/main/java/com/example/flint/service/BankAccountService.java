@@ -36,6 +36,9 @@ public class BankAccountService {
         return bankAccountRepo.save(bankAccount);
     }
 
+    //Update a bank account
+    public BankAccount updateBankAccount(BankAccount bankAccount){return bankAccountRepo.save(bankAccount);}
+
     //Delete an account
     public void deleteAccount(Long id) { bankAccountRepo.deleteById(id);}
 
