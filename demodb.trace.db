@@ -1,0 +1,9 @@
+2022-04-30 19:40:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BANK_ACCOUNT" not found; SQL statement:
+select bankaccoun0_.id as id1_0_, bankaccoun0_.account_name as account_2_0_, bankaccoun0_.account_type as account_3_0_, bankaccoun0_.balance as balance4_0_ from bank_account bankaccoun0_ [42102-200]
+2022-04-30 19:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BANK_ACCOUNT" not found; SQL statement:
+select count(*) as col_0_0_ from bank_account bankaccoun0_ where bankaccoun0_.id=? [42102-200]
+2022-04-30 19:50:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BANK_ACCOUNT" not found; SQL statement:
+select count(*) as col_0_0_ from bank_account bankaccoun0_ where bankaccoun0_.id=? [42102-200]
