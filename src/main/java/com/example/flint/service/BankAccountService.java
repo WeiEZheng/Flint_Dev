@@ -15,24 +15,28 @@ public class BankAccountService {
     @Autowired
     BankAccountRepository bankAccountRepo;
 
-
+    //Get all bank accounts
     public List<BankAccount> getAllBankAccounts() {
         return (List<BankAccount>) bankAccountRepo.findAll();
     }
 
+    //Get an account by id
     public Optional<BankAccount> getBankAccount(Long id) {
         return bankAccountRepo.findById(id);
     }
 
+    //Get balance
     public BigDecimal getBankAccountBalance(Long id) {
         BankAccount bankAccount = bankAccountRepo.getById(id);
             return bankAccount.getBalance();
     }
 
+    //Create a new account
     public BankAccount createNewBankAccount(BankAccount bankAccount) {
         return bankAccountRepo.save(bankAccount);
     }
 
+    //Delete an account
     public void deleteAccount(Long id) { bankAccountRepo.deleteById(id);}
 
 
