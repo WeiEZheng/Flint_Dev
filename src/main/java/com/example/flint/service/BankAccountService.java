@@ -67,5 +67,11 @@ public class BankAccountService {
         }
     }
 
+    //Transfer Method
+    public void transfer(Long bankAccountFromId, Long bankAccountToId, BigDecimal transferAmount){
+        withdraw(bankAccountFromId, transferAmount);
+        deposit(bankAccountToId, transferAmount);
+    }
+
 
 }
