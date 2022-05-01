@@ -46,10 +46,26 @@ public class BankAccountService {
     }
 
     //Deposit method
-    public BigDecimal deposit(Long id, BigDecimal input){
+    public BigDecimal deposit(Long id, BigDecimal input) throws IllegalArgumentException{
         BankAccount bankAccount = bankAccountRepo.getById(id);
-        bankAccount.setBalance(bankAccount.getBalance().add(input));
-        return bankAccount.getBalance();
+        if (input.compareTo(new BigDecimal("0.00")) >= 0) {
+            bankAccount.setBalance(bankAccount.getBalance().add(input));
+            return bankAccount.getBalance();
+        } else {
+            throw new IllegalArgumentException("Not a valid input");
+        }
     }
+
+    //Withdraw Method
+    public BigDecimal withdraw(Long id, BigDecimal input) throws IllegalArgumentException {
+        BankAccount bankAccount = bankAccountRepo.getById(id);
+        if (input.compareTo(new BigDecimal("0.00")) >= 0) {
+            bankAccount.setBalance(bankAccount.getBalance().subtract(input));
+            return bankAccount.getBalance();
+        }else {
+            throw new IllegalArgumentException("Not a valid input");
+        }
+    }
+
 
 }
