@@ -6,8 +6,8 @@ function App() {
     <div className="App">
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
+          <img src="https://i.imgur.com/oZUMusi.png" alt="Fire Logo"/>
           <a class="navbar-brand" href="#">Flint</a>
-          <img src=
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
