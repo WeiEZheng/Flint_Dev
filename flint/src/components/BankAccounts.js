@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 
 class BankAccounts extends React.Component {
@@ -12,7 +12,7 @@ this.remove = this.remove.bind(this);
    componentDidMount() {
     this.setState({isLoading: true});
 
-    fetch('/bankaccount')
+    fetch('/api/bankaccount')
     .then(response => response.json())
     .then(data => this.setState({bankAccounts: data, isLoading: false}));
   }

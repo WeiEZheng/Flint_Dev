@@ -9,9 +9,6 @@ class Home extends Component {
     return (
       <div>
         <NavigationBar/>
-        <div>
-          <button className="btn"><Link to="/bankaccount">Bank Accounts</Link></button>
-        </div>
       </div>
     );
   }
