@@ -5,7 +5,7 @@ class NavigationBar extends React.Component {
 
 
 render(){
-return (<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+return (<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                   <img src={brandLogo} alt="Fire Logo" />
                   <a class="navbar-brand" href="#">Flint</a>
