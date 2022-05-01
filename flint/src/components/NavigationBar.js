@@ -1,5 +1,5 @@
 import React from 'react';
-import brandLogo from '../../../src/static/images/brandLogo.png';
+import brandLogo from '../../src/static/images/brandLogo.png';
 class NavigationBar extends React.Component {
 
 
