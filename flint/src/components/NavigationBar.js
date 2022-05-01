@@ -7,7 +7,7 @@ class NavigationBar extends Component {
 
 render(){
 return (
-  <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container-fluid">
       <img src={brandLogo}  alt="Fire Logo"/>
       <a className="navbar-brand" href="/">Flint</a>
@@ -30,7 +30,7 @@ return (
             <a className="nav-link" href="/expenses">Expense Tracker</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/category">Test</a>
+            <a className="nav-link" href="/category">Categories</a>
           </li>
         </ul>
       </div>
