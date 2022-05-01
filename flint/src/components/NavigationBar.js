@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, NavbarText, DropdownItem, DropdownToggle, DropdownMenu, UncontrolledDropdown} from 'reactstrap';
 import brandLogo from "./images/brandLogo.png";
 
 
@@ -8,59 +7,36 @@ class NavigationBar extends Component {
 
 render(){
 return (
-  <div>
-    <Navbar
-      color="dark"
-      dark
-      expand="md"
-      dark
-    >
-      <NavbarBrand href="/">
-        <img src={brandLogo} alt={"Flint Logo - A Flame"}/>
-        FLINT
-      </NavbarBrand>
-      <NavbarToggler onClick={function noRefCheck(){}} />
-      <Collapse navbar>
-        <Nav
-          className="me-auto"
-          navbar
-        >
+  <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div className="container-fluid">
+      <img src={brandLogo} alt="Fire Logo"/>
+      <a className="navbar-brand" href="#">Flint</a>
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <a className="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">Accounts</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">Transactions</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/expenses">Expense Tracker</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  );
+}
 
-          <UncontrolledDropdown
-            inNavbar
-            nav
-          >
-            <DropdownToggle
-              caret
-              nav
-            >
-              Menu
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem href={"#"}>
-                Transactions
-              </DropdownItem>
+}
 
-              <DropdownItem href={"#"}>
-                Bank Account
-              </DropdownItem>
-              <DropdownItem href={"#"}>
-                Expense Tracker
-              </DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem href={"#"}>
-                Sign out
-              </DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
-          <NavItem>
-            <NavLink href="https://github.com/WEIPREVER/Flint_Dev">
-              GitHub
-            </NavLink>
-          </NavItem>
-        </Nav>
-      </Collapse>
-    </Navbar>
-  </div>);
-}} export default NavigationBar;
+export default NavigationBar;
 
