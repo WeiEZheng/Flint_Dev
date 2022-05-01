@@ -3,6 +3,7 @@ package com.example.flint.controller;
 
 import com.example.flint.model.BankAccount;
 
+import com.example.flint.repository.BankAccountRepository;
 import com.example.flint.service.BankAccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,8 +39,11 @@ public class BankAccountController {
     }
 
     //Update account
-    @RequestMapping(value="bankaccount/{id}", method = RequestMethod.PUT)
-    BankAccount updateBankAccount(@PathVariable("id") BankAccount bankAccount) {return bankAccount;}
+    @RequestMapping (value="/bankaccount/{id}", method =  RequestMethod.PUT)
+    ResponseEntity <BankAccount> updateBankAccount(@Valid @RequestBody BankAccount bankAccount) throws URISyntaxException {
+        BankAccount result = bankAccountServe.updateBankAccount(bankAccount);
+        return ResponseEntity.ok().body(result);
+    }
 
 
     //Get a list of all accounts (by user eventually)
