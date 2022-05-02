@@ -49,17 +49,12 @@ const data = [
 
 class Chart extends React.Component {
 
-
-
-
-
-
   render() {
     return (
-      <ResponsiveContainer width="100%" height="100%">
+
         <LineChart
-          width={500}
-          height={300}
+          width={600}
+          height={400}
           data={data}
           margin={{
             top: 5,
@@ -76,7 +71,7 @@ class Chart extends React.Component {
           <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
           <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
         </LineChart>
-      </ResponsiveContainer>
+
     );
   }
 }

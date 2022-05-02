@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Chart from './Chart';
+
+
 
 class BankAccounts extends React.Component {
 
@@ -18,6 +20,8 @@ class BankAccounts extends React.Component {
 
 
 
+
+
   render() {
     const {bankAccounts, isLoading} = this.state;
 
@@ -28,37 +32,36 @@ class BankAccounts extends React.Component {
 
     return (
        <>
-            <div className="container-fluid text-center">
+            <div style={{backgroundImage: 'linear-gradient(#ff8a00, #e52e71)'}} className="container-fluid text-center">
                 <div className="row content">
                   <div className="col-sm-2 sidenav">
-                    <p><a href="create/bankaccount">Create Account</a></p>
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
+                  <p><button className='btn btn-danger'>Create Account</button></p>
+                  <p><button className='btn btn-danger'>Transfer</button></p>
+                  <p><button className='btn btn-danger'>Withdraw</button></p>
+                  <p><button className='btn btn-danger'>Deposit</button></p>
+
                   </div>
                   <div className="col-sm-8 text-left">
-                    <h1>Accounts</h1>
-                <div>
-                  <h2>Bank Accounts</h2>
+                    <h1>Your Accounts</h1>
+                <div style={{backgroundImage: 'linear-gradient(#ff8a00, #e52e71)'}}>
+                  <h4>Balances</h4>
+                      <Chart />
                 <p></p>
                 </div>
                     <hr></hr>
-                    <h3>Test</h3>
-                    <p>Lorem ipsum...</p>
+                    <h3>Put some banking text here.</h3>
+                    <p>Some account related text....</p>
                   </div>
                   <div className="col-sm-2 sidenav">
                     <div className="well">
-                      <p>ADS</p>
+                      <p>Put an ad here?</p>
                     </div>
                     <div className="well">
-                      <p>ADS</p>
+                      <p>Put an add here?</p>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <footer className="container-fluid text-center">
-                <p>Copyright 2022 Flint Banking</p>
-              </footer>
       </>
     );
   };

@@ -21,7 +21,7 @@ const App = () => {
             <Route path='/transactions' element={<Transactions />}/>
           </Routes>
         </BrowserRouter>
-    <Footer/>
+    <div><Footer/></div>
   </div>
   )
 }
