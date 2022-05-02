@@ -1,6 +1,6 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import Chart from './Chart';
+
 
 class BankAccounts extends React.Component {
 
@@ -34,7 +34,7 @@ class BankAccounts extends React.Component {
                   </div>
                   <div className="col-sm-8 text-left">
                     <h1>Welcome to Flint Banking</h1>
-                    <Chart/>
+
                     <hr></hr>
                     <h3>Test</h3>
                     <p>Lorem ipsum...</p>
