@@ -4,14 +4,14 @@ import BankAccount from "./components/BankAccounts";
 import Home from "./components/Home.js";
 import Transactions from "./components/Transactions";
 import NavigationBar from "./components/NavigationBar";
-import ExpenseReport from "./components/ExpenseReport";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from "./components/Footer";
+import ExpenseReport from "./components/ExpenseReport";
 
 const App = () => {
 
   return (
-  <div>
+    <div style={{backgroundImage: 'linear-gradient(#ff8a00, #e52e71)', position: 'relative', minHeight: '100vh'}}>
     <NavigationBar/>
         <BrowserRouter>
           <Routes>
