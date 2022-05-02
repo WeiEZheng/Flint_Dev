@@ -34,10 +34,10 @@ const ExpenseReport = () => {
           <FormGroup>
             <label for={'category'}><h3>Category:</h3></label>
             <select name={'category'} id={'category'} class="form-select form-select-lg mb-3" aria-label="Default select example">
-              <option selected >"Pick Expense Category..."</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option selected >"Student Loans 🤡"</option>
+              <option value="1">Shopping 🤑</option>
+              <option value="2">Vacation 🛳</option>
+              <option value="3">Car Payment 🚗 </option>
 
             </select>
 
