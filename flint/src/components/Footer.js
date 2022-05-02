@@ -1,13 +1,13 @@
-//import React from 'react';
-//
-//class Footer extends React.Component {
-//
-//
-//render(){
-//return(<footer class="page-footer font-small blue">
-//           <div class="footer-copyright text-center py-3">© 2022 Copyright:
-//             <a href="/">FlintBanking.com</a>
-//           </div>
-//         </footer>);
-//         }}
-//         export default Footer;
+import React from 'react';
+
+const Footer = () => {
+
+  return (
+    <div style={{backgroundImage: 'linear-gradient(#ff8a00, #e52e71)'}}>
+      <footer className="text-center" style={{background:'rgb(255, 255, 255, .3)'}}>
+        <span style={{fontWeight:'bold', fontSize:'18px'}}>Copyright 2022 Flint Banking</span>
+      </footer>
+    </div>
+  )
+}
+export default Footer;

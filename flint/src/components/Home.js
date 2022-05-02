@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import NavigationBar from './NavigationBar';
+import Footer from "./Footer";
 
 
 
 class Home extends Component {
   render() {
     return (
+      <div>
 <div style={{backgroundImage: 'linear-gradient(#ff8a00, #e52e71)'}}>
       <div className="container-fluid text-center">
         <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'100vh'}}>
@@ -14,12 +16,11 @@ class Home extends Component {
 
       </div>
   </div>
-
       </div>
-  <footer className="container-fluid text-center" style={{background:'rgb(255, 255, 255, .3)'}}>
-    <span style={{fontWeight:'bold', fontSize:'18px'}}>Copyright 2022 Flint Banking</span>
-  </footer>
 </div>
+
+        <Footer/>
+      </div>
 
   );
   }
