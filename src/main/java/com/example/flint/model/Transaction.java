@@ -1,6 +1,7 @@
 package com.example.flint.model;
 
 import com.example.flint.model.enumeration.TransactionType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
