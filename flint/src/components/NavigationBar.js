@@ -27,10 +27,7 @@ return (
             <a className="nav-link" href="/transactions">Transactions</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/expenses">Expense Tracker</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/category">Categories</a>
+            <a className="nav-link" href="/expenseReport">Expense Report</a>
           </li>
         </ul>
       </div>
