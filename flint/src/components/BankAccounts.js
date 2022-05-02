@@ -39,7 +39,7 @@ class BankAccounts extends React.Component {
                     <h1>Accounts</h1>
                 <div>
                   <h2>Bank Accounts</h2>
-                   <p></p>
+                <p></p>
                 </div>
                     <hr></hr>
                     <h3>Test</h3>
