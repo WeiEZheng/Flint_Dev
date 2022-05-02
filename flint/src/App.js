@@ -6,6 +6,7 @@ import Transactions from "./components/Transactions";
 import NavigationBar from "./components/NavigationBar";
 import ExpenseReport from "./components/ExpenseReport";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from "./components/Footer";
 
 const App = () => {
 
@@ -20,7 +21,8 @@ const App = () => {
             <Route path='/transactions' element={<Transactions />}/>
           </Routes>
         </BrowserRouter>
-    </div>
+    <Footer/>
+  </div>
   )
 }
 export default App;

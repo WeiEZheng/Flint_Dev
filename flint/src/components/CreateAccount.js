@@ -1,12 +1,12 @@
-import React from 'react';
+// import React from 'react';
+//
+//
+// class CreateAccount extends React.Component {
+// render(){
+// return(
+//
+// )
+// }
 
 
-class CreateAccount extends React.Component {
-render(){
-return(
 
-)
-}
-
-
-}
