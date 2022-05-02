@@ -7,9 +7,10 @@ import {Form, FormGroup} from "reactstrap";
 const ExpenseReport = () => {
 
   return (
-
-    <div className={'container'}>
-      <h1 className={'mt-3'}> Welcome to Your Expense Report:</h1>
+    <div style={{backgroundImage: 'linear-gradient(#ff8a00, #e52e71)'}}>
+    <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'100vh'}}>
+      <div className={'container'}>
+      <h1 className={'mt-3'} style={{fontFamily:'Helvetica Neue', fontWeight: 'bold', color:'black'}}> Welcome to Your Expense Report:</h1>
       <div className={'row mt-3'}>
         <div className={'col-sm'}>
           <Budget/>
@@ -54,6 +55,8 @@ const ExpenseReport = () => {
 
         </form>
       </div>
+      </div>
+    </div>
     </div>
   )
 }
