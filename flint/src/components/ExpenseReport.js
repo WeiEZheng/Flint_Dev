@@ -3,6 +3,7 @@ import Budget from "./Budget";
 import Remaining from "./Remaining";
 import AmountSpent from "./AmountSpent";
 import {Form, FormGroup} from "reactstrap";
+import {Link} from "react-router-dom";
 
 const ExpenseReport = () => {
 
@@ -26,8 +27,7 @@ const ExpenseReport = () => {
           <FormGroup>
           <label for={'category'}><h3>Name:</h3></label>
         <input name={'name'} id={'name'} className="form-control form-control-lg mb-3" type="text" placeholder="Add Name of Expense..."
-               aria-label=".form-control-lg"/>
-          <button type="submit" className="btn btn-primary mb-3">Submit</button>
+               aria-label=".form-control-lg" onChange/>
           </FormGroup>
 
 
@@ -41,7 +41,6 @@ const ExpenseReport = () => {
 
             </select>
 
-            <button type="submit" className="btn btn-primary mb-3">Submit</button>
           </FormGroup>
 
 
@@ -49,7 +48,17 @@ const ExpenseReport = () => {
             <label for={'dateOfExpense'}><h3>Date of Expense:</h3></label>
             <input type={'text'} name={'category'} id={'category'} className="form-control form-control-lg mb-3" type="text" placeholder="Add Date of Expense..."
                    aria-label=".form-control-lg"/>
-            <button type="submit" className="btn btn-primary mb-3">Submit</button>
+          </FormGroup>
+          <FormGroup>
+          <span className={'col-sm'}>
+            <button type="submit" className={"alert alert-primary"} style={{marginRight:'16px', fontWeight:'bold'}}>Submit</button>
+            </span>
+          <span className={'col-sm'}>
+            <Link to={'/'}>
+            <button type="cancel" className={"alert alert-warning"}  style={{fontWeight:'bold'}}>Cancel</button>
+            </Link>
+            </span>
+
           </FormGroup>
 
 
