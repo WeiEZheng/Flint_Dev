@@ -1,16 +1,16 @@
 import React, {Component} from "react";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import BankAccounts from "./components/BankAccounts";
+import BankAccounts from "./components/AccountComp/BankAccounts";
 import Home from "./components/Home.js";
 import Transactions from "./components/Transactions";
 import NavigationBar from "./components/NavigationBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from "./components/Footer";
 import ExpenseReport from "./components/ExpenseReport";
-import Deposit from './components/Deposit';
-import Transfer from './components/Transfer';
-import CreateAccount from './components/CreateAccount';
-import Withdraw from './components/Withdraw';
+import Deposit from './components/AccountComp/Deposit';
+import Transfer from './components/AccountComp/Transfer';
+import CreateAccount from './components/AccountComp/CreateAccount';
+import Withdraw from './components/AccountComp/Withdraw';
 
 const App = () => {
 
