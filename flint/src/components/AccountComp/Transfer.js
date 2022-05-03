@@ -1,6 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-class Deposit extends React.Component {
+class Transfer extends React.Component {
 
 
 render(){
@@ -9,18 +10,26 @@ return(
 <div className="container-fluid text-center">
                 <div className="row content">
                   <div className="col-sm-2 sidenav">
-
+                    <Link to="/bankaccount">
+                      <button className= 'btn-sm btn-danger'style={{margin:5}}>Back</button>
+                    </Link>
                   </div>
                   <div className="col-sm-8 text-left">
-                    <h1>Accounts</h1>
+                    <h1>Transfer Funds</h1>
                 <div>
-                  <h6>Deposit</h6>
+                  <h6>Transfer</h6>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Account Number</span>
+                    <span class="input-group-text" id="inputGroup-sizing-default">From Account</span>
                   </div>
                   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></input>
                 </div>
+                <div class="input-group mb-3">
+                                     <div class="input-group-prepend">
+                                     <span class="input-group-text" id="inputGroup-sizing-default">To Account</span>
+                                     </div>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></input>
+                                   </div>
                 <div class="input-group mb-3">
                      <div class="input-group-prepend">
                      <span class="input-group-text" id="inputGroup-sizing-default">Amount</span>
@@ -46,4 +55,4 @@ return(
 )
 }
 }
-export default Deposit;
+export default Transfer;

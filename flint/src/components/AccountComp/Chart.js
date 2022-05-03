@@ -68,13 +68,13 @@ class Chart extends React.Component {
             bottom: 5,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          <Line type="monotone" dataKey="pv" stroke="#FFFF00" strokeWidth={2} activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="uv" stroke="#800080" strokeWidth={2} />
         </LineChart>
 
     );
