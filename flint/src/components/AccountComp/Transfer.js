@@ -18,24 +18,27 @@ return(
                     <h1>Transfer Funds</h1>
                 <div>
                   <h6>Transfer</h6>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">From Account</span>
+                  <form className="form-inline">
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="inputGroup-sizing-default">From Account</span>
                   </div>
-                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></input>
+                  <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></input>
                 </div>
-                <div class="input-group mb-3">
-                                     <div class="input-group-prepend">
-                                     <span class="input-group-text" id="inputGroup-sizing-default">To Account</span>
+                <div className="input-group mb-3">
+                                     <div className="input-group-prepend">
+                                     <span className="input-group-text" id="inputGroup-sizing-default">To Account</span>
                                      </div>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></input>
+                                    <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></input>
                                    </div>
-                <div class="input-group mb-3">
-                     <div class="input-group-prepend">
-                     <span class="input-group-text" id="inputGroup-sizing-default">Amount</span>
+                <div className="input-group mb-3">
+                     <div className="input-group-prepend">
+                     <span className="input-group-text" id="inputGroup-sizing-default">Amount</span>
                      </div>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></input>
+                    <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></input>
                    </div>
+                   <button type="submit" className="btn btn-danger mb-2">Submit</button>
+                   </form>
                 </div>
                     <hr></hr>
                     <h3>Banking text</h3>
