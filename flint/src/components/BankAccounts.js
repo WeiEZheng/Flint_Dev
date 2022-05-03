@@ -35,14 +35,26 @@ class BankAccounts extends React.Component {
             <div className="container-fluid text-center">
                 <div className="row content">
                   <div className="col-sm-2 sidenav">
-                    <button className='btn-sm btn-danger'style={{margin:5}}>Create Account</button>
-                    <button className='btn-sm btn-danger'style={{margin:5}}>Transfer</button>
+                   <Link to="/newaccount">
+                                            <button className= 'btn-sm btn-danger'style={{margin:5}}>
+                                                 Create Account
+                                            </button>
+                                        </Link>
+                    <Link to="/transfer">
+                                             <button className= 'btn-sm btn-danger'style={{margin:5}}>
+                                                  Transfer Funds
+                                             </button>
+                                         </Link>
                     <Link to="/deposit">
-                         <button className= 'btn-sm btn-danger'>
-                              Deposit
+                         <button className= 'btn-sm btn-danger'style={{margin:5}}>
+                              Deposit Funds
                          </button>
                      </Link>
-                    <button className='btn-sm btn-danger'style={{margin:5}}>Withdraw</button>
+                    <Link to="/withdraw">
+                                             <button className= 'btn-sm btn-danger' style={{margin:5}}>
+                                                  Withdraw Funds
+                                             </button>
+                                         </Link>
                   </div>
                   <div className="col-sm-8 text-left">
                     <h1>Accounts</h1>
