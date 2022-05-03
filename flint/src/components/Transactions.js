@@ -1,22 +1,19 @@
 import React from 'react';
 
-
 class Transactions extends React.Component {
-
   state = {
     isLoading: true,
-    transactions: []
-  }
+    transactions: [],
+  };
 
-  async componentDidMount(){
-    const response = await fetch('api/transactions')
+  async componentDidMount() {
+    const response = await fetch('api/transactions');
     const body = await response.json();
-    this.setState({transactions: body, isLoading:false});
+    this.setState({ transactions: body, isLoading: false });
   }
-
 
   render() {
-    const {transactions, isLoading} = this.state;
+    const { transactions, isLoading } = this.state;
 
     if (isLoading) {
       return <p>Loading...</p>;
@@ -24,19 +21,17 @@ class Transactions extends React.Component {
 
     return (
       <div>
-            <h2>Transaction History</h2>
-            {transactions.map(transaction =>
-              <div key={transaction.id}>
+        <h2>Transaction History</h2>
+        {transactions.map(transaction => (
+          <div key={transaction.id}>
             <ul>
-
-            <li>    {transaction.id}</li>
+              <li> {transaction.id}</li>
             </ul>
-              </div>
-            )}
-
+          </div>
+        ))}
       </div>
     );
-  };
+  }
 }
 
 export default Transactions;
