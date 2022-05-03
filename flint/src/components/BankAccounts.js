@@ -1,20 +1,24 @@
-import React, {useState} from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React, {useState, useEffect} from 'react';
 import Chart from './Chart';
 
 class BankAccounts extends React.Component {
 
   state = {
     isLoading: true,
-    bankAccounts: []
+    bankAccounts: [],
 
   }
 
   async componentDidMount(){
     const response = await fetch('api/bankaccount')
     const body = await response.json();
-    this.setState({bankAccounts: body, isLoading:false});
+
+    this.setState({ bankAccounts: body, isLoading: false });
+
+
   }
+
+
 
 
 
@@ -31,34 +35,33 @@ class BankAccounts extends React.Component {
             <div className="container-fluid text-center">
                 <div className="row content">
                   <div className="col-sm-2 sidenav">
-                    <p><a href="create/bankaccount">Create Account</a></p>
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
+                    <button className='btn-sm btn-danger'style={{margin:5}}>Create account</button>
+                    <button className='btn-sm btn-danger'style={{margin:5}}>Transfer</button>
+                    <button className='btn-sm btn-danger'style={{margin:5}}>Deposit</button>
+                    <button className='btn-sm btn-danger'style={{margin:5}}>Withdraw</button>
                   </div>
                   <div className="col-sm-8 text-left">
                     <h1>Accounts</h1>
                 <div>
-                  <h2>Bank Accounts</h2>
-                <p></p>
+                  <h6>Balances</h6>
+                <Chart/>
                 </div>
                     <hr></hr>
-                    <h3>Test</h3>
-                    <p>Lorem ipsum...</p>
+                    <h3>Banking text</h3>
+                    <p>Some kind of account text</p>
                   </div>
                   <div className="col-sm-2 sidenav">
                     <div className="well">
-                      <p>ADS</p>
+                      <p>Blogger</p>
                     </div>
                     <div className="well">
-                      <p>ADS</p>
+                      <p>NYCE Tube</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <footer className="container-fluid text-center">
-                <p>Copyright 2022 Flint Banking</p>
-              </footer>
+
       </>
     );
   };
