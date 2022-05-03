@@ -8,6 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from "./components/Footer";
 import ExpenseReport from "./components/ExpenseReport";
 import Deposit from './components/Deposit';
+import Transfer from './components/Transfer';
+import CreateAccount from './components/CreateAccount';
+import Withdraw from './components/Withdraw';
 
 const App = () => {
 
@@ -21,6 +24,9 @@ const App = () => {
             <Route path='/expenseReport' element={<ExpenseReport />}/>
             <Route path='/transactions' element={<Transactions />}/>
             <Route path='/deposit' element={<Deposit />}/>
+            <Route path='/newaccount' element={<CreateAccount />}/>
+            <Route path='/withdraw' element={<Withdraw />}/>
+            <Route path='/transfer' element={<Transfer />}/>
           </Routes>
         </BrowserRouter>
     <Footer/>
