@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Chart from './Chart';
+import {Link} from 'react-router-dom';
 
 class BankAccounts extends React.Component {
 
@@ -12,7 +13,6 @@ class BankAccounts extends React.Component {
   async componentDidMount(){
     const response = await fetch('api/bankaccount')
     const body = await response.json();
-
     this.setState({ bankAccounts: body, isLoading: false });
 
 
@@ -35,9 +35,13 @@ class BankAccounts extends React.Component {
             <div className="container-fluid text-center">
                 <div className="row content">
                   <div className="col-sm-2 sidenav">
-                    <button className='btn-sm btn-danger'style={{margin:5}}>Create account</button>
+                    <button className='btn-sm btn-danger'style={{margin:5}}>Create Account</button>
                     <button className='btn-sm btn-danger'style={{margin:5}}>Transfer</button>
-                    <button className='btn-sm btn-danger'style={{margin:5}}>Deposit</button>
+                    <Link to="/deposit">
+                         <button className= 'btn-sm btn-danger'>
+                              Deposit
+                         </button>
+                     </Link>
                     <button className='btn-sm btn-danger'style={{margin:5}}>Withdraw</button>
                   </div>
                   <div className="col-sm-8 text-left">
