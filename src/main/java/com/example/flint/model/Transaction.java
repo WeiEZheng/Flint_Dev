@@ -39,10 +39,10 @@ public class Transaction implements Serializable {
     private Long fromAccountNumber;
 
     @ManyToOne
-    private Category category;
+    private Long categoryId;
 
     @ManyToOne
-    private Long userid;
+    private Long userId;
 
     public Long getId() {
         return id;
