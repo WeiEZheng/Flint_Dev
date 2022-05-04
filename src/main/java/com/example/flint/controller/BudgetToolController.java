@@ -3,12 +3,15 @@ package com.example.flint.controller;
 import com.example.flint.model.BudgetTool;
 import com.example.flint.repository.BudgetToolRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.net.*;
-import java.util.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Collection;
+import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -33,7 +36,7 @@ public class BudgetToolController {
             log.info("Getting category item by {}", id);
 
             Optional<BudgetTool> category = budgetRepository.findById(id);
-            return category.map(response -> ResponseEntity.ok().body(response))
+            return ((Optional<?>) category).map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
         }
         @PostMapping("/budget_tool")
