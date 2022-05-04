@@ -41,10 +41,7 @@ public class Transaction {
     private Category category;
 
     @ManyToOne
-    private User user;
-
-    @ManyToOne
-    private BankAccount bankAccount;
+    private Long userid;
 
     public Long getId() {
         return id;
@@ -102,11 +99,11 @@ public class Transaction {
         this.category = category;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserid() {
+        return userid;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserid(Long userid) {
+        this.userid = userid;
     }
 }
