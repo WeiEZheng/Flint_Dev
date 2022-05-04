@@ -39,10 +39,12 @@ public class Transaction implements Serializable {
     private Long fromAccountNumber;
 
     @ManyToOne
-    private Long categoryId;
+    @JoinColumn(name = "id", insertable = false, updatable = false)
+    private Category category;
 
     @ManyToOne
-    private Long userId;
+    @JoinColumn(name = "id", insertable = false, updatable = false)
+    private User user;
 
     public Long getId() {
         return id;
@@ -100,11 +102,11 @@ public class Transaction implements Serializable {
         this.category = category;
     }
 
-    public Long getUserid() {
-        return userid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserid(Long userid) {
-        this.userid = userid;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
