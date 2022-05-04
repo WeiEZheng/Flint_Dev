@@ -26,7 +26,7 @@ public class BudgetTool implements Serializable {
     private BigDecimal originalBudget;
 
     @Column(name = "remaining_budget", precision = 21, scale = 2)
-    private BigDecimal remainingBudget;
+    private BigDecimal remainingBudget = originalBudget;
 
     @Column(name = "amount_spent", precision = 21, scale = 2)
     private BigDecimal amountSpent;
@@ -37,4 +37,7 @@ public class BudgetTool implements Serializable {
     @Column(name = "date_of_expense")
     private LocalDate dateOfExpense;
 
+    public void setRemainingBudget(BigDecimal remainingBudget) {
+        this.remainingBudget = remainingBudget.subtract(amountSpent);
+    }
 }
