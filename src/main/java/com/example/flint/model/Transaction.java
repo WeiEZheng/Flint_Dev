@@ -5,12 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.Instant;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "transaction")
-public class Transaction {
+public class Transaction implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
