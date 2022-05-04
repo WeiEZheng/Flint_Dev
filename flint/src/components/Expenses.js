@@ -1,22 +1,19 @@
 import React from 'react';
 
-
 class Expenses extends React.Component {
-
   state = {
     isLoading: true,
-    expenses: []
-  }
+    expenses: [],
+  };
 
-  async componentDidMount(){
-    const response = await fetch('/expenses')
+  async componentDidMount() {
+    const response = await fetch('/expenses');
     const body = await response.json();
-    this.setState({expenses: body, isLoading:false});
+    this.setState({ expenses: body, isLoading: false });
   }
-
 
   render() {
-    const {expenses, isLoading} = this.state;
+    const { expenses, isLoading } = this.state;
 
     if (isLoading) {
       return <p>Loading...</p>;
@@ -24,19 +21,17 @@ class Expenses extends React.Component {
 
     return (
       <div>
-            <h2>Account Expenses</h2>
-            {expenses.map(expense =>
-              <div key={expense.id}>
+        <h2>Account Expenses</h2>
+        {expenses.map(expense => (
+          <div key={expense.id}>
             <ul>
-
-            <li>    {expense.accountName}</li>
+              <li> {expense.accountName}</li>
             </ul>
-              </div>
-            )}
-
+          </div>
+        ))}
       </div>
     );
-  };
+  }
 }
 
 export default Expenses;

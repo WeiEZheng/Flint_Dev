@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import brandLogo from "./images/brandLogo.png";
-
+import brandLogo from './images/brandLogo.png';
 
 class NavigationBar extends Component {
 
@@ -39,4 +38,3 @@ return (
 }
 
 export default NavigationBar;
-
