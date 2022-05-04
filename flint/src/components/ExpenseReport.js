@@ -2,7 +2,7 @@ import React from 'react';
 import Budget from './Budget';
 import Remaining from './Remaining';
 import AmountSpent from './AmountSpent';
-import { Form, FormGroup } from 'reactstrap';
+import { FormGroup } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 const ExpenseReport = () => {
@@ -56,14 +56,7 @@ const ExpenseReport = () => {
                 <label for={'dateOfExpense'}>
                   <h3>Date of Expense:</h3>
                 </label>
-                <input
-                  type={'text'}
-                  name={'category'}
-                  id={'category'}
-                  className="form-control form-control-lg mb-3"
-                  placeholder="Add Date of Expense..."
-                  aria-label=".form-control-lg"
-                />
+                <DatePicker selected={this.state.date} onChange={{this.handleChange}}/>
               </FormGroup>
               <FormGroup>
                 <span className={'col-sm'}>
