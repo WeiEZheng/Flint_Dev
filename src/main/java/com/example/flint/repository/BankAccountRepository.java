@@ -19,88 +19,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-//Modified from Jhipster
 
 public interface BankAccountRepository extends JpaRepository<BankAccount, Long> {
-    @RestController
-    @RequestMapping("/api")
-    @Transactional
-     class BudgetToolResource {
 
-        private final Logger log = LoggerFactory.getLogger(BudgetToolResource.class);
-
-        private static final String ENTITY_NAME = "budgetTool";
-
-
-        private final BudgetToolRepository budgetToolRepository;
-
-        public BudgetToolResource(BudgetToolRepository budgetToolRepository) {
-            this.budgetToolRepository = budgetToolRepository;
-        }
-
-
-        @PostMapping("/budget-tools")
-        public ResponseEntity<BudgetTool> createBudgetTool(@RequestBody BudgetTool budgetTool) throws URISyntaxException {
-            log.debug("REST request to save BudgetTool : {}", budgetTool);
-            if (budgetTool.getId() != null) {
-                throw new Error("A new budgetTool cannot already have an ID " + ENTITY_NAME + " idexists");
-            }
-            BudgetTool result = budgetToolRepository.save(budgetTool);
-            return ResponseEntity
-                .created(new URI("/api/budget-tools/" + result.getId()))
-                .body(result);
-        }
-
-
-        @PutMapping("/budget-tools/{id}")
-        public ResponseEntity<BudgetTool> updateBudgetTool(
-            @PathVariable(value = "id", required = false) final Long id,
-            @RequestBody BudgetTool budgetTool
-        ) throws URISyntaxException {
-            log.debug("REST request to update BudgetTool : {}, {}", id, budgetTool);
-            if (budgetTool.getId() == null) {
-                throw new Error("Invalid id "+ ENTITY_NAME + " idnull");
-            }
-            if (!Objects.equals(id, budgetTool.getId())) {
-                throw new Error("Invalid ID " + ENTITY_NAME + " idinvalid");
-            }
-
-            if (!budgetToolRepository.existsById(id)) {
-                throw new Error("Entity not found " + ENTITY_NAME + " idnotfound");
-            }
-
-            BudgetTool result = budgetToolRepository.save(budgetTool);
-            return ResponseEntity
-                .ok()
-                .body(result);
-        }
-
-
-
-        @GetMapping("/budget-tools")
-        public ResponseEntity<List<BudgetTool>> getAllBudgetTools(Pageable pageable) {
-            log.debug("REST request to get a page of BudgetTools");
-            Page<BudgetTool> page = budgetToolRepository.findAll(pageable);
-            return ResponseEntity.ok().body(page.getContent());
-        }
-
-
-        @GetMapping("/budget-tools/{id}")
-        public Optional<BudgetTool> getBudgetTool(@PathVariable Long id) {
-            log.debug("REST request to get BudgetTool : {}", id);
-            Optional<BudgetTool> budgetTool = budgetToolRepository.findById(id);
-            return budgetTool;
-        }
-
-
-        @DeleteMapping("/budget-tools/{id}")
-        public ResponseEntity<Void> deleteBudgetTool(@PathVariable Long id) {
-            log.debug("REST request to delete BudgetTool : {}", id);
-            budgetToolRepository.deleteById(id);
-            return ResponseEntity
-                .noContent()
-                .build();
-        }
-    }
 
 }
