@@ -1,6 +1,8 @@
 package com.example.flint.service;
 
 import com.example.flint.model.BankAccount;
+import com.example.flint.model.Transaction;
+import com.example.flint.model.enumeration.TransactionType;
 import com.example.flint.repository.BankAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class BankAccountService {
 
     @Autowired
     BankAccountRepository bankAccountRepo;
+
+    @Autowired
+    TransactionServices transactionServices;
 
     //Get all bank accounts
     public List<BankAccount> getAllBankAccounts() {
@@ -53,6 +58,8 @@ public class BankAccountService {
         BankAccount bankAccount = bankAccountRepo.getById(id);
         if (input.compareTo(new BigDecimal("0.00")) >= 0) {
             bankAccount.setBalance(bankAccount.getBalance().add(input));
+            transactionServices.create(TransactionType.CREDIT, input, bankAccount);
+            bankAccountRepo.save(bankAccount);
             return bankAccount.getBalance();
         } else {
             throw new IllegalArgumentException("Not a valid input");
@@ -64,6 +71,8 @@ public class BankAccountService {
         BankAccount bankAccount = bankAccountRepo.getById(id);
         if (input.compareTo(new BigDecimal("0.00")) >= 0) {
             bankAccount.setBalance(bankAccount.getBalance().subtract(input));
+            transactionServices.create(TransactionType.DEBIT, input, bankAccount);
+            bankAccountRepo.save(bankAccount);
             return bankAccount.getBalance();
         }else {
             throw new IllegalArgumentException("Not a valid input");
@@ -75,6 +84,4 @@ public class BankAccountService {
         withdraw(bankAccountFromId, transferAmount);
         deposit(bankAccountToId, transferAmount);
     }
-
-
 }

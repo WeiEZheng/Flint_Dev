@@ -1,5 +1,7 @@
 package com.example.flint.service;
 
+import com.example.flint.model.BankAccount;
+import com.example.flint.model.Category;
 import com.example.flint.model.Transaction;
 import com.example.flint.model.enumeration.TransactionType;
 import com.example.flint.repository.BankAccountRepository;
@@ -141,5 +143,13 @@ public class TransactionServices {
         return transactionRepository.findByFromAccountNumberAndCategory_Id(
                 bankId,
                 categoryId);
+    }
+
+    public Transaction create(TransactionType transactionType, BigDecimal amount, BankAccount account){
+        Transaction newTransaction = new Transaction();
+        newTransaction.setTypeOfTransaction(transactionType);
+        newTransaction.setTransactionAmount(amount);
+        newTransaction.setToAccountNumber(account.getId());
+        return this.save(newTransaction);
     }
 }

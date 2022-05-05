@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
 
 class Transactions extends React.Component {
   state = {
@@ -43,10 +44,10 @@ class Transactions extends React.Component {
                     {transaction.id}
                   </Button>
                 </td>
-                <td>{transaction.dateOfTransaction}</td>
+                <td>{format(new Date(transaction.dateOfTransaction), 'yyyy/MM/dd kk:mm:ss')}</td>
                 <td>{transaction.typeOfTransaction}</td>
-                <td><Button tag={Link} to={`/bankaccount/${transaction.fromAccountId}`} color="link" size="sm">
-                    {transaction.fromAccountId}
+                <td><Button tag={Link} to={`/bankaccount/${transaction.toAccountId}`} color="link" size="sm">
+                    {transaction.toAccountId}
                   </Button></td>
                 <td>
                   {transaction.transactionAmount}
