@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div >
       <footer className={"footer"}>
-       Copyright 2022 Flint Banking
+        All Rights Reserved 2022 © FLINT
       </footer>
     </div>
   );
