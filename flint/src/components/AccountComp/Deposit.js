@@ -3,7 +3,21 @@ import { Link } from 'react-router-dom';
 
 class Deposit extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {accountNumber: '', amount: ''}
+  }
+
+  depositFunds(event) {
+    alert(this.state.accountNumber);
+    event.preventDefault();
+  }
   
+  accountChange(event) {
+    this.setState({
+      [event.target.accountNumber]: event.target.value
+    });
+  }
 
   render() {
     return (
@@ -21,7 +35,7 @@ class Deposit extends React.Component {
               <h1>Accounts</h1>
               <div>
                 <h6>Deposit</h6>
-                <form className="form-inline">
+                <form className="form-inline" onSubmit={this.depositFunds} id="depositForm">
                   <div className="input-group mb-3">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroup-sizing-default">
@@ -29,7 +43,9 @@ class Deposit extends React.Component {
                       </span>
                     </div>
                     <input
-                      type="text"
+                      type="text" name="accountNumber"
+                       value={this.state.accountNumber}
+                       onChange ={this.accountChange} required
                       className="form-control"
                       aria-label="Sizing example input"
                       aria-describedby="inputGroup-sizing-default"
@@ -42,7 +58,9 @@ class Deposit extends React.Component {
                       </span>
                     </div>
                     <input
-                      type="text"
+                      type="text" name="amount"
+                       value={this.state.amount}
+                      // onChange = { this.amountChanged}
                       className="form-control"
                       aria-label="Sizing example input"
                       aria-describedby="inputGroup-sizing-default"
