@@ -5,19 +5,24 @@ class Deposit extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {accountNumber: '', amount: ''}
+    this.state = {
+      deposit: {}
+    };
+    this.handleChange = this.handleChange.bind(this);
+     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  depositFunds(event) {
-    alert(this.state.accountNumber);
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.accountNumber);
     event.preventDefault();
   }
   
-  accountChange(event) {
+  handleChange = (e) => {
     this.setState({
-      [event.target.accountNumber]: event.target.value
-    });
-  }
+      [e.target.name]: e.target.value
+    })
+   }
+          
 
   render() {
     return (
@@ -35,7 +40,7 @@ class Deposit extends React.Component {
               <h1>Accounts</h1>
               <div>
                 <h6>Deposit</h6>
-                <form className="form-inline" onSubmit={this.depositFunds} id="depositForm">
+                <form className="form-inline"  id="depositForm">
                   <div className="input-group mb-3">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroup-sizing-default">
@@ -43,7 +48,10 @@ class Deposit extends React.Component {
                       </span>
                     </div>
                     <input
-                      type="text" name="accountNumber"
+                      type="text"
+                      name="accountNumber"
+                      value={this.state.accountNumber || ''}
+                      onChange = { this.handleChange}
                       className="form-control"
                       aria-label="Sizing example input"
                       aria-describedby="inputGroup-sizing-default"
@@ -56,15 +64,16 @@ class Deposit extends React.Component {
                       </span>
                     </div>
                     <input
-                      type="text" name="amount"
-                       //value={this.state.amount}
-                      // onChange = { this.amountChanged}
+                      type="text"
+                      name="amount"
+                      value={this.state.amount || ''}
+                       onChange = { this.handleChange}
                       className="form-control"
                       aria-label="Sizing example input"
                       aria-describedby="inputGroup-sizing-default"
                     ></input>
                   </div>
-                  <button type="submit" className="btn btn-danger mb-2">
+                  <button type="submit" onClick={this.handleSubmit} className="btn btn-danger mb-2">
                     Submit
                   </button>
                 </form>
