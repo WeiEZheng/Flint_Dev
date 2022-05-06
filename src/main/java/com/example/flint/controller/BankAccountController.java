@@ -83,10 +83,11 @@ public class BankAccountController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    // @PutMapping("/bankAccount/{id}/")
-    // public ResponseEntity<Void> getTransactionsDateOfTransaction(
-    //         @PathVariable(value = "id") Long id,
-    //         @RequestParam(value = "amount", required = false) BigDecimal amount) {
-    //     bankAccountServe.deposit(id, amount);
-    // }
+    @PostMapping("/deposit")
+    public ResponseEntity<Void> getTransactionsDateOfTransaction(
+            @RequestParam(value = "accountNumber", required = true) Long id,
+            @RequestParam(value = "amount", required = true) BigDecimal amount ) {
+        bankAccountServe.deposit(id, amount);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 }

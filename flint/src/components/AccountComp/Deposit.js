@@ -44,8 +44,6 @@ class Deposit extends React.Component {
                     </div>
                     <input
                       type="text" name="accountNumber"
-                       value={this.state.accountNumber}
-                       onChange ={this.accountChange} required
                       className="form-control"
                       aria-label="Sizing example input"
                       aria-describedby="inputGroup-sizing-default"
@@ -54,12 +52,12 @@ class Deposit extends React.Component {
                   <div className="input-group mb-3">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroup-sizing-default">
-                        Amount
+                        Amount 
                       </span>
                     </div>
                     <input
                       type="text" name="amount"
-                       value={this.state.amount}
+                       //value={this.state.amount}
                       // onChange = { this.amountChanged}
                       className="form-control"
                       aria-label="Sizing example input"
