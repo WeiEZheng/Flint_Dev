@@ -17,7 +17,6 @@ class BankAccounts extends React.Component {
 
   render() {
     const { bankAccounts, isLoading } = this.state;
-
     if (isLoading) {
       return <p>Loading...</p>;
     }

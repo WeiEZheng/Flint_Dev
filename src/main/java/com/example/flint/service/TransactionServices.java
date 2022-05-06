@@ -1,5 +1,7 @@
 package com.example.flint.service;
 
+import com.example.flint.model.BankAccount;
+import com.example.flint.model.Category;
 import com.example.flint.model.Transaction;
 import com.example.flint.model.enumeration.TransactionType;
 import com.example.flint.repository.BankAccountRepository;
@@ -81,7 +83,7 @@ public class TransactionServices {
     public List<Transaction> findByDateOfTransaction(
             Long accountId,
             Instant dateOfTransaction) {
-        return transactionRepository.findByBankAccount_IdAndDateOfTransaction(
+        return transactionRepository.findByFromAccountNumberAndDateOfTransaction(
                 accountId,
                 dateOfTransaction);
     }
@@ -90,7 +92,7 @@ public class TransactionServices {
             Long accountId,
             Instant dateOfTransactionStart,
             Instant dateOfTransactionEnd) {
-        return transactionRepository.findByBankAccount_IdAndDateOfTransactionIsBetween(
+        return transactionRepository.findByFromAccountNumberAndDateOfTransactionIsBetween(
                 accountId,
                 dateOfTransactionStart,
                 dateOfTransactionEnd);
@@ -107,7 +109,7 @@ public class TransactionServices {
     public List<Transaction> findByTypeOfTransaction(
             Long id,
             TransactionType typeOfTransaction) {
-        return transactionRepository.findByBankAccount_IdAndTypeOfTransaction(
+        return transactionRepository.findByFromAccountNumberAndTypeOfTransaction(
                 id,
                 typeOfTransaction);
     }
@@ -115,7 +117,7 @@ public class TransactionServices {
     public List<Transaction> findByTransactionAmountIsBetween(Long id,
                                                               BigDecimal transactionAmountStart,
                                                               BigDecimal transactionAmountEnd) {
-        return transactionRepository.findByBankAccount_IdAndTransactionAmountIsBetween(
+        return transactionRepository.findByFromAccountNumberAndTransactionAmountIsBetween(
                 id,
                 transactionAmountStart,
                 transactionAmountEnd);
@@ -124,13 +126,13 @@ public class TransactionServices {
     public List<Transaction> findByTransactionAmountIsGreaterThanEqual(
             Long id,
             BigDecimal transactionAmount) {
-        return transactionRepository.findByBankAccount_IdAndTransactionAmountIsGreaterThanEqual(id, transactionAmount);
+        return transactionRepository.findByFromAccountNumberAndTransactionAmountIsGreaterThanEqual(id, transactionAmount);
     }
 
     public List<Transaction> findByTransactionAmountLessThanEqual(
             Long bankId,
             BigDecimal transactionAmount) {
-        return transactionRepository.findByBankAccount_IdAndTransactionAmountLessThanEqual(
+        return transactionRepository.findByFromAccountNumberAndTransactionAmountLessThanEqual(
                 bankId,
                 transactionAmount);
     }
@@ -138,8 +140,16 @@ public class TransactionServices {
     public List<Transaction> findByCategory_Id(
             Long bankId,
             Long categoryId) {
-        return transactionRepository.findByBankAccount_IdAndCategory_Id(
+        return transactionRepository.findByFromAccountNumberAndCategory_Id(
                 bankId,
                 categoryId);
+    }
+
+    public Transaction create(TransactionType transactionType, BigDecimal amount, BankAccount account){
+        Transaction newTransaction = new Transaction();
+        newTransaction.setTypeOfTransaction(transactionType);
+        newTransaction.setTransactionAmount(amount);
+        newTransaction.setToAccountNumber(account.getId());
+        return this.save(newTransaction);
     }
 }

@@ -1,4 +1,7 @@
 import React from 'react';
+import { Button, Table } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
 
 class Transactions extends React.Component {
   state = {
@@ -20,18 +23,44 @@ class Transactions extends React.Component {
     }
 
     return (
-      <div>
-        <h2>Transaction History</h2>
-        {transactions.map(transaction => (
-          <div key={transaction.id}>
-            <ul>
-              <li> {transaction.id}</li>
-            </ul>
-          </div>
-        ))}
-      </div>
-    );
-  }
-}
+      <div className="table-responsive">
+      {transactions && transactions.length > 0 ? (
+        <Table responsive>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Date Of Transaction</th>
+              <th>Type Of Transaction</th>
+              <th>Account</th>
+              <th>Amount</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.map((transaction, i) => (
+              <tr key={`entity-${i}`} data-cy="entityTable">
+                <td>
+                  <Button tag={Link} to={`/transactions/${transaction.id}`} color="link" size="sm">
+                    {transaction.id}
+                  </Button>
+                </td>
+                <td>{format(new Date(transaction.dateOfTransaction), 'yyyy/MM/dd kk:mm:ss')}</td>
+                <td>{transaction.typeOfTransaction}</td>
+                <td><Button tag={Link} to={`/bankaccount/${transaction.toAccountId}`} color="link" size="sm">
+                    {transaction.toAccountId}
+                  </Button></td>
+                <td>
+                  {transaction.transactionAmount}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      ) : (
+        !isLoading && <div>No Transactions found</div>
+      )}
+    </div>
+    )
+}}
 
 export default Transactions;
