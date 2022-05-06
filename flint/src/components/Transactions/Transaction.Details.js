@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, TableRow } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 
@@ -16,15 +16,20 @@ class TransactionDetail extends React.Component {
   }
 
   render() {
-    <Row>
-    <Col md="8">
+    const { transactions, isLoading } = this.state;
+
+    if (isLoading) {
+      return <p>Loading...</p>;
+    }
+
+    <TableRow>
       <h2 data-cy="marketPriceDetailsHeading">MarketPrice</h2>
       <dl>
         <dd>{transactions.id}</dd>
         <dt>
           <span id="dateOfTransaction">Transaction Date</span>
         </dt>
-        <dd>{format(new Date(transaction.dateOfTransaction), 'yyyy/MM/dd kk:mm:ss')}</dd>
+        <dd>{format(new Date(transactions.dateOfTransaction), 'yyyy/MM/dd kk:mm:ss')}</dd>
         <dt>
           <span id="typeOfTransaction">Type of Transaction</span>
         </dt>
@@ -38,8 +43,8 @@ class TransactionDetail extends React.Component {
         </dt>
         <dd>
         <td>
-            <Button tag={Link} to={`/bankaccount/${transaction.toAccountId}`} color="link" size="sm">
-                {transaction.toAccountId}
+            <Button tag={Link} to={`/bankaccount/${transactions.toAccountId}`} color="link" size="sm">
+                {transactions.toAccountId}
             </Button>
         </td>
         </dd>
@@ -47,8 +52,7 @@ class TransactionDetail extends React.Component {
       <Button tag={Link} to="/transactions" replace color="info" data-cy="BackButton">
         <span className="d-none d-md-inline">Back</span>
       </Button>
-    </Col>
-  </Row>
+  </TableRow>
 }}
 
 export default TransactionDetail;

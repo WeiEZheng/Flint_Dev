@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import BankAccounts from './components/AccountComp/BankAccounts';
 import Home from './components/Home.js';
-import Transactions from './components/Transactions';
+import Transactions from './components/Transactions/Transactions';
 import NavigationBar from './components/NavigationBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/Footer';
