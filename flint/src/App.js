@@ -11,6 +11,7 @@ import Deposit from './components/AccountComp/Deposit';
 import Transfer from './components/AccountComp/Transfer';
 import CreateAccount from './components/AccountComp/CreateAccount';
 import Withdraw from './components/AccountComp/Withdraw';
+import TransactionDetail from './components/Transactions/Transaction.Details';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/bankaccount" element={<BankAccounts />} />
           <Route path="/expenseReport" element={<ExpenseReport />} />
           <Route path="/transactions" element={<Transactions />} />
+          <Route path="/transactions/:id" element={<TransactionDetail/>} />
           <Route path="/deposit" element={<Deposit />} />
           <Route path="/newaccount" element={<CreateAccount />} />
           <Route path="/withdraw" element={<Withdraw />} />
