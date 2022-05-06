@@ -17,7 +17,7 @@ const App = () => {
   return (
     <div style={{ backgroundImage: 'linear-gradient(#ff8a00, #e52e71)', position: 'relative', minHeight: '100vh' }}>
       <NavigationBar />
-      <BrowserRouter>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/bankaccount" element={<BankAccounts />} />
@@ -28,7 +28,7 @@ const App = () => {
           <Route path="/withdraw" element={<Withdraw />} />
           <Route path="/transfer" element={<Transfer />} />
         </Routes>
-      </BrowserRouter>
+
       <Footer />
     </div>
   );

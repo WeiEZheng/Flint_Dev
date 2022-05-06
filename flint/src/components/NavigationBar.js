@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import brandLogo from './images/brandLogo.png';
-
+import {Link} from 'react-router-dom'
 class NavigationBar extends Component {
 
 
@@ -8,7 +8,7 @@ render(){
 return (
   <nav className="navbar navbar-expand-lg navbar-dark" style={{color:'white', background:'rgb(0, 0, 0, .85)', position: 'relative', top:'0', width:'100%'}}>
     <div className="container-fluid" >
-      <img src={brandLogo}  alt="Fire Logo"/>
+    <Link to={""}>  <img src={brandLogo}  alt="Fire Logo"/></Link>
       <a className="navbar-brand" style={{fontFamily:'Helvetica Neue', fontWeight:'bold', color:'white'}} href="/">FLINT</a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
