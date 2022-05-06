@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, TableRow } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { format } from 'date-fns';
 
 class TransactionDetail extends React.Component {
@@ -10,7 +10,7 @@ class TransactionDetail extends React.Component {
   };
 
   async componentDidMount() {
-    const response = await fetch('api/transactions/${id}');
+    const response = await fetch('api/'+useLocation);
     const body = await response.json();
     this.setState({ transactions: body, isLoading: false });
   }
@@ -25,6 +25,8 @@ class TransactionDetail extends React.Component {
     <TableRow>
       <h2 data-cy="marketPriceDetailsHeading">MarketPrice</h2>
       <dl>
+        <dd>route</dd>
+        <dd>{useLocation}</dd>
         <dd>{transactions.id}</dd>
         <dt>
           <span id="dateOfTransaction">Transaction Date</span>
