@@ -73,13 +73,21 @@ public class BankAccountController {
         log.info("Deleting bank account #" + id);
         Optional<BankAccount> bankAccount = bankAccountServe.getBankAccount(id);
 
-        if(!bankAccount.isPresent()) {
+        if (!bankAccount.isPresent()) {
             log.info("Unable to delete, account with id #:" + id + "not found");
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         }
         bankAccountServe.deleteAccount(id);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
+    
+    //Deposit
+    // @RequestMapping (value="/bankaccount/{id}", method =  RequestMethod.PUT)
+    // ResponseEntity <BankAccount> updateBankAccount(@Valid @RequestParam id,
+    //  @RequestBody BankAccount bankAccount) throws URISyntaxException {
+    //     BankAccount result = bankAccountServe.updateBankAccount(bankAccount);
+    //     return ResponseEntity.ok().body(result);
+    // }
 
 
 

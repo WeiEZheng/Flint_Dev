@@ -15,7 +15,7 @@ public class Transaction implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
@@ -42,10 +42,8 @@ public class Transaction implements Serializable {
     private Category category;
 
     @ManyToOne
+    @JsonIgnoreProperties(value = { "user", "category" }, allowSetters = true)
     private User user;
-
-    @ManyToOne
-    private BankAccount bankAccount;
 
     public Long getId() {
         return id;
