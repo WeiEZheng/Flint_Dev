@@ -5,8 +5,11 @@ import AmountSpent from './AmountSpent';
 import { FormGroup } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
+
 const ExpenseReport = () => {
+
   return (
+
     <div style={{ backgroundImage: 'linear-gradient(#ff8a00, #e52e71)' }}>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
         <div className={'container'}>
@@ -44,7 +47,7 @@ const ExpenseReport = () => {
                 <label for={'category'}>
                   <h3>Category:</h3>
                 </label>
-                <select name={'category'} id={'category'} class="form-select form-select-lg mb-3" aria-label="Default select example">
+                <select name={'category'} id={'category'} className="form-select form-select-lg mb-3" aria-label="Default select example">
                   <option selected>"Student Loans 🤡"</option>
                   <option value="1">Shopping 🤑</option>
                   <option value="2">Vacation 🛳</option>
@@ -56,7 +59,7 @@ const ExpenseReport = () => {
                 <label for={'dateOfExpense'}>
                   <h3>Date of Expense:</h3>
                 </label>
-                <DatePicker selected={this.state.date} onChange={{this.handleChange}}/>
+
               </FormGroup>
               <FormGroup>
                 <span className={'col-sm'}>

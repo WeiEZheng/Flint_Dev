@@ -12,6 +12,7 @@ import Transfer from './components/AccountComp/Transfer';
 import CreateAccount from './components/AccountComp/CreateAccount';
 import Withdraw from './components/AccountComp/Withdraw';
 
+
 const App = () => {
   return (
     <div style={{ backgroundImage: 'linear-gradient(#ff8a00, #e52e71)', position: 'relative', minHeight: '100vh' }}>
