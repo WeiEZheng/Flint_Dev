@@ -41,7 +41,7 @@ root.render(
         <Route path="/newaccount" element={<CreateAccount />} />
         <Route path="/withdraw" element={<Withdraw />} />
         <Route path="/transfer" element={<Transfer />} />
-        <Route path="/welcome" element={<Welcome />} />
+        <Route path="/welcome/:name" element={<Welcome />} />
         <Route path="/login" element={<LoginComponentWithNavigation />} />
         <Route path="*" element={<Error />} />
 
