@@ -40,14 +40,14 @@ class Transactions extends React.Component {
             {transactions.map((transaction, i) => (
               <tr key={`entity-${i}`} data-cy="entityTable">
                 <td>
-                  <Button tag={Link} to={`/transactions/${transaction.id}`} color="link" size="sm">
+                  <Button tag={Link} to={`/transactions/${transaction.id}`} color="black" size="small">
                     {transaction.id}
                   </Button>
                 </td>
                 <td>{format(new Date(transaction.dateOfTransaction), 'yyyy/MM/dd kk:mm:ss')}</td>
                 <td>{transaction.typeOfTransaction}</td>
-                <td><Button tag={Link} to={`/bankaccount/${transaction.toAccountId}`} color="link" size="sm">
-                    {transaction.toAccountId}
+                <td><Button tag={Link} to={`/bankaccount/${transaction.primaryAccountNumber}`} color="black" size="small">
+                    {transaction.primaryAccountNumber}
                   </Button></td>
                 <td>
                   {transaction.transactionAmount}
