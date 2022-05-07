@@ -2,7 +2,7 @@ package com.example.flint.controller;
 
 
 import com.example.flint.model.BankAccount;
-
+import com.example.flint.model.Transaction;
 import com.example.flint.service.BankAccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,10 +84,8 @@ public class BankAccountController {
     }
     //deposit
     @PostMapping("/deposit")
-    public ResponseEntity<Void> deposit(
-            @RequestParam(value = "accountNumber", required = true) Long id,
-            @RequestParam(value = "amount", required = true) BigDecimal amount ) {
-        bankAccountServe.deposit(id, amount);
+    public ResponseEntity<Void> deposit(@RequestBody Transaction transaction) {
+        bankAccountServe.deposit(transaction.getToAccountNumber(), transaction.getTransactionAmount());
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 

@@ -15,8 +15,10 @@ class Deposit extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    axios.post('api/deposit?accountNumber=' + this.state.accountNumber + '&amount=' + this.state.amount, {
-      
+    axios.post('api/deposit', {
+      id:0,
+      accountNumber: this.state.accountNumber,
+      amount: this.state.amount
     })
       .then(function (response) {
         console.log(response);
