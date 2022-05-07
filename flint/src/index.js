@@ -20,9 +20,9 @@ import withNavigation from "./components/WithNavigation";
 import Login from "./components/Login/Login";
 import Error from "./components/Error";
 import withParams from "./components/WithParams";
-import Logout from "./components/Logout";
 import AuthenticationService from "./services/AuthenticationService";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
+import Logout from "./components/Logout";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
