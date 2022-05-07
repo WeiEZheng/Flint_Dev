@@ -16,10 +16,10 @@ import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import Welcome from "./components/Welcome";
 import withNavigation from "./components/WithNavigation";
-import withParams from "./components/WithParams";
 
 import Login from "./components/Login/Login";
 import Error from "./components/Error";
+import withParams from "./components/WithParams";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
