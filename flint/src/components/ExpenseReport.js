@@ -2,16 +2,16 @@ import React from 'react';
 import Budget from './Budget';
 import Remaining from './Remaining';
 import AmountSpent from './AmountSpent';
+import './ExpenseReport.css';
 import { FormGroup } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import ExpenseTable from "./ExpenseTable";
 
 
 const ExpenseReport = () => {
 
   return (
-
-    <div style={{ backgroundImage: 'linear-gradient(#ff8a00, #e52e71)' }}>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div className={'expenseForm'}>
         <div className={'container'}>
           <h1 className={'mt-3'} style={{ fontFamily: 'Helvetica Neue', fontWeight: 'bold', color: 'black' }}>
             {' '}
@@ -57,7 +57,7 @@ const ExpenseReport = () => {
 
               <FormGroup>
                 <label for={'dateOfExpense'}>
-                  <h3>Date of Expense:</h3>
+                  <h3>Date:</h3>
                 </label>
 
               </FormGroup>
@@ -76,8 +76,8 @@ const ExpenseReport = () => {
                 </span>
               </FormGroup>
             </form>
+            <ExpenseTable />
           </div>
-        </div>
       </div>
     </div>
   );
