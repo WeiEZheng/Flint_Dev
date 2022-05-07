@@ -20,6 +20,7 @@ import withNavigation from "./components/WithNavigation";
 import Login from "./components/Login/Login";
 import Error from "./components/Error";
 import withParams from "./components/WithParams";
+import Logout from "./components/Logout";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -44,6 +45,7 @@ root.render(
         <Route path="/newaccount" element={<CreateAccount />} />
         <Route path="/withdraw" element={<Withdraw />} />
         <Route path="/transfer" element={<Transfer />} />
+        <Route path="/logout"  element={<Logout/>} />
         <Route path="/welcome/:name" element={<WelcomeWithParams />} />
         <Route path="/login" element={<LoginWithNavigation />} />
         <Route path="*" element={<Error />} />
