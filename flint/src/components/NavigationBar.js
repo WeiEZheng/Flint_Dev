@@ -6,6 +6,7 @@ class NavigationBar extends Component {
 
 
 render(){
+  const isLoggedIn = AuthenticationService.isLoggedIn();
 return (
   <nav className="navbar navbar-expand-lg navbar-dark" style={{color:'white', background:'rgb(0, 0, 0, .85)', position: 'relative', top:'0', width:'100%'}}>
     <div className="container-fluid" >
@@ -30,13 +31,13 @@ return (
             <a className="nav-link" href="/expenseReport">Expense Report</a>
           </li>
         </ul>
-        <ul className="navbar-nav justify-content-end">
-          <li className="nav-item">
+        <ul className="navbar-nav navbar-collapse justify-content-end">
+          {(!isLoggedIn) && <li className="nav-item">
             <a className="nav-link" href="/login">Login</a>
-          </li>
-          <li className="nav-item">
+          </li>}
+          {isLoggedIn && <li className="nav-item">
             <a className="nav-link" href="/logout" onClick={AuthenticationService.logout}>Logout</a>
-          </li>
+          </li>}
         </ul>
       </div>
     </div>
