@@ -11,7 +11,7 @@ class Logout extends Component {
         <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'100vh'}}>
           <div className={'container'}>
             <Link to={""} ><img className={"container-fluid text-center"} src={homeLogo} alt={"The Flint logo: A flame"}/></Link>
-            <span className={'logoutText'}> See you soon! - FLINT </span>
+            <span className={'logoutText'}> See you soon! <br/> - FLINT </span>
           </div>
         </div>
       </div>

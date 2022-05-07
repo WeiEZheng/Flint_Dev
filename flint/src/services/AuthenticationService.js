@@ -1,8 +1,9 @@
 class AuthenticationService {
   registerSuccessfulLogin(username,password){
-    sessionStorage.setItem('authenticatedUser',username)
+    console.log("login registered")
+    sessionStorage.setItem('authenticatedUser', username)
   }
 
 }
 
-export default AuthenticationService;
+export default new AuthenticationService();
