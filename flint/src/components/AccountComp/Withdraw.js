@@ -14,8 +14,10 @@ class Withdraw extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    axios.post('api/withdraw?fromAccountNumber=' + this.state.fromAccountNumber + '&amount=' + this.state.amount, {
-      
+    axios.post('api/withdraw', {
+      id:0,
+      primaryAccountNumber: this.state.fromAccountNumber,
+      transactionAmount: this.state.amount
     })
       .then(function (response) {
         console.log(response);

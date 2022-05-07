@@ -92,20 +92,17 @@ public class BankAccountController {
 
     //withdraw
     @PostMapping("/withdraw")
-    public ResponseEntity<Void> withdraw(
-            @RequestParam(value = "fromAccountNumber", required = true) Long id,
-            @RequestParam(value = "amount", required = true) BigDecimal amount) {
-        bankAccountServe.withdraw(id, amount);
+    public ResponseEntity<Void> withdraw(@RequestBody Transaction transaction) {
+        bankAccountServe.withdraw(transaction.getPrimaryAccountNumber(),
+                transaction.getTransactionAmount());
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
     
     //transfer
     @PostMapping("/transfer")
-    public ResponseEntity<Void> transfer(
-            @RequestParam(value = "fromAccountNumber", required = true) Long id1,
-            @RequestParam(value = "toAccountNumber", required = true) Long id2,
-            @RequestParam(value = "amount", required = true) BigDecimal amount ) {
-        bankAccountServe.transfer(id1, id2, amount);
+    public ResponseEntity<Void> transfer(@RequestBody Transaction transaction) {
+        bankAccountServe.transfer(transaction.getPrimaryAccountNumber(), transaction.getSecondaryAccountNumber(),
+                transaction.getTransactionAmount());
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

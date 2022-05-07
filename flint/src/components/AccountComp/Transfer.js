@@ -15,8 +15,11 @@ class Transfer extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    axios.post('api/transfer?fromAccountNumber=' + this.state.fromAccountNumber + '&toAccountNumber='+ this.state.toAccountNumber + '&amount=' + this.state.amount, {
-      
+    axios.post('api/transfer', {
+      id: 0,
+      secondaryAccountNumber: this.state.toAccountNumber,
+      primaryAccountNumber: this.state.fromAccountNumber,
+      transactionAmount: this.state.amount
     })
       .then(function (response) {
         console.log(response);
