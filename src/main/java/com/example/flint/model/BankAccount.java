@@ -14,7 +14,7 @@ public class BankAccount implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(name="accountName")
@@ -25,6 +25,8 @@ public class BankAccount implements Serializable {
 
     @Column(name="accountType")
     AccountType accountType;
+    
+    
 
     public BankAccount(Long id, String accountName, BigDecimal balance, AccountType accountType) {
         this.id = id;

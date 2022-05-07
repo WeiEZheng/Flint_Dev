@@ -25,7 +25,7 @@ class CreateAccount extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
-      window.location.reload(false);
+      // window.location.reload(false);
   }
 
   handleChange = e => {
@@ -50,7 +50,7 @@ class CreateAccount extends React.Component {
               <h1>Create an Account</h1>
               <div>
                 <h6>Enter Details</h6>
-                <form className="form-inline">
+                <form className="form-inline" >
                   <div className="input-group mb-3">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroup-sizing-default">
@@ -62,7 +62,7 @@ class CreateAccount extends React.Component {
                       name="accountName"
                       value={this.state.accountName || ''}
                       onChange={this.handleChange}
-                      className="form-control"
+                      className="form-control bg-transparent"
                       aria-label="Sizing example input"
                       aria-describedby="inputGroup-sizing-default"
                     ></input>
