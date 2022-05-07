@@ -13,9 +13,9 @@ class ExpenseReport extends Component {
     this.state = {
       expenses:
         [
-          {id:1, name: "Fishing", category:"Vacation", date: "11/11/11"},
-          {id:2, name: "Ibiza", category:"Vacation", date: "12/22/11"},
-          {id:3, name: "July Interest", category:"Student Loans", date: "11/21/11"}
+          {id:1, name: "Fishing", amount: "50.52", category:"Vacation", date: "11/11/11"},
+          {id:2, name: "Ibiza w/ Anna Delvey 🤑",amount: "40532.53", category:"Vacation", date: "12/22/11"},
+          {id:3, name: "July Interest",amount: "340", category:"Student Loans", date: "11/21/11"}
 
         ]
     }
@@ -92,6 +92,7 @@ class ExpenseReport extends Component {
                 <thead>
                 <tr className={"tableHeader"}>
                   <th>Name:</th>
+                  <th>Amount:</th>
                   <th>Category:</th>
                   <th> Date:</th>
                 </tr>
@@ -102,8 +103,9 @@ class ExpenseReport extends Component {
                       expense =>
                     <tr>
                     <td className={"tableData"}>{expense.name}</td>
-                    <td className={"tableData"}>{expense.category}</td>
-                    <td className={"tableData"}>{expense.date}</td>
+                    <td className={"tableData"}>${expense.amount}</td>
+                      <td className={"tableData"}>{expense.category}</td>
+                      <td className={"tableData"}>{expense.date}</td>
                     </tr>
                     )
                   }
