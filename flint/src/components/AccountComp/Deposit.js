@@ -1,20 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 class Deposit extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      deposit: {}
+     
     };
     this.handleChange = this.handleChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.accountNumber);
     event.preventDefault();
+    axios.post('api/deposit', {
+      id:0,
+      accountNumber: this.state.accountNumber,
+      amount: this.state.amount
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
   
   handleChange = (e) => {
