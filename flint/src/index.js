@@ -15,10 +15,9 @@ import NavigationBar from "./components/NavigationBar";
 
 import Footer from "./components/Footer";
 import Welcome from "./components/Welcome";
-import LoginPage from "./components/Login/LoginPage";
 import withNavigation from "./components/WithNavigation";
 import Login from "./components/Login/Login";
-import WithNavigation from "./components/WithNavigation";
+import Error from "./components/Error";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -44,7 +43,9 @@ root.render(
         <Route path="/transfer" element={<Transfer />} />
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/login" element={<LoginComponentWithNavigation />} />
-      </Routes>
+        <Route path="*" element={<Error />} />
+
+        </Routes>
         <Footer />
       </div>
     </BrowserRouter>
