@@ -82,12 +82,21 @@ public class BankAccountController {
         bankAccountServe.deleteAccount(id);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
-
+    //deposit
     @PostMapping("/deposit")
-    public ResponseEntity<Void> getTransactionsDateOfTransaction(
+    public ResponseEntity<Void> deposit(
             @RequestParam(value = "accountNumber", required = true) Long id,
             @RequestParam(value = "amount", required = true) BigDecimal amount ) {
         bankAccountServe.deposit(id, amount);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    //withdraw
+    @PostMapping("/withdraw")
+    public ResponseEntity<Void> withdraw(
+            @RequestParam(value = "fromAccountNumber", required = true) Long id,
+            @RequestParam(value = "amount", required = true) BigDecimal amount ) {
+        bankAccountServe.withdraw(id, amount);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }
