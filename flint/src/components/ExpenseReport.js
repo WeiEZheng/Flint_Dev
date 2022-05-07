@@ -1,16 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Budget from './Budget';
 import Remaining from './Remaining';
 import AmountSpent from './AmountSpent';
 import './ExpenseReport.css';
 import { FormGroup } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import ExpenseTable from "./ExpenseTable";
 
 
-const ExpenseReport = () => {
+class ExpenseReport extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      expenses:
+        [
+          {id:1, name: "Fishing", category:"Vacation", date: "11/11/11"},
+          {id:2, name: "Ibiza", category:"Vacation", date: "12/22/11"},
+          {id:3, name: "July Interest", category:"Student Loans", date: "11/21/11"}
 
-  return (
+        ]
+    }
+  }
+  render(){
+    return (
       <div className={'expenseForm'}>
         <div className={'container'}>
           <h1 className={'mt-3'} style={{ fontFamily: 'Helvetica Neue', fontWeight: 'bold', color: 'black' }}>
@@ -76,49 +87,35 @@ const ExpenseReport = () => {
                 </span>
               </FormGroup>
             </form>
-            <ExpenseTable />
+            <div className={'container'} >
+              <table className={'table'}>
+                <thead>
+                <tr className={"tableHeader"}>
+                  <th>Name:</th>
+                  <th>Category:</th>
+                  <th> Date:</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {
+                    this.state.expenses.map (
+                      expense =>
+                    <tr>
+                    <td className={"tableData"}>{expense.name}</td>
+                    <td className={"tableData"}>{expense.category}</td>
+                    <td className={"tableData"}>{expense.date}</td>
+                    </tr>
+                    )
+                  }
+                </tbody>
+              </table>
+            </div>
           </div>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
+;
 export default ExpenseReport;
 
-
-// import React, {Component} from 'react';
-//
-// class ExpenseReport extends Component{
-//
-//   state = {
-//     isLoading: true,
-//     Categories: []
-//   }
-//
-//   async componentDidMount(){
-//     const response = await fetch('api/categories')
-//     const body = await response.json();
-//     this.setState({Categories: body, isLoading:false});
-//   }
-//   render(){
-//     const{Categories, isLoading} = this.state;
-//     if(isLoading)
-//       return(<div>Loading...</div> );
-//
-//     return (
-//
-//       <div>
-//         {/*Every category should return a div*/}
-//         <h2>Categories</h2>
-//         {
-//           Categories.map(category =>
-//             <div id={category.id}>
-//               {category.name}
-//             </div>
-//           )
-//         }
-//       </div>
-//
-//     )
-//   }
-// }
-// export default ExpenseReport;
