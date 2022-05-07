@@ -21,6 +21,7 @@ import Login from "./components/Login/Login";
 import Error from "./components/Error";
 import withParams from "./components/WithParams";
 import Logout from "./components/Logout";
+import AuthenticationService from "./services/AuthenticationService";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -33,6 +34,7 @@ root.render(
     <BrowserRouter>
       <div style={{ backgroundImage: 'linear-gradient(#ff8a00, #e52e71)', position: 'relative', minHeight: '100vh' }}>
         <NavigationBar />
+
 
 
         <Routes>
