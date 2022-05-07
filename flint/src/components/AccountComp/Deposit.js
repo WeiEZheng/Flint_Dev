@@ -18,7 +18,7 @@ class Deposit extends React.Component {
     axios.post('api/deposit', {
       id:0,
       primaryAccountNumber: this.state.accountNumber,
-      amount: this.state.amount
+      transactionAmount: this.state.amount
     })
       .then(function (response) {
         console.log(response);

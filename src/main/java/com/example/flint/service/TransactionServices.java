@@ -165,7 +165,7 @@ public class TransactionServices {
         newTransaction.setTransactionAmount(amount);
         newTransaction.setPrimaryAccountNumber(account.getId());
         newTransaction.setCategory(category);
-        newTransaction.setSecondaryAccountNumber(secondAccount.getId());
+//        newTransaction.setSecondaryAccountNumber(secondAccount.getId());
         newTransaction.setUser(user); // can implement auto grab user
         return this.save(newTransaction);
     }
