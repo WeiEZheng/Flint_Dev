@@ -10,6 +10,7 @@
 
 .tableHeader{
   font-Size: 36px;
+  /*text-align: center;*/
 
 }
 .table {
@@ -21,4 +22,5 @@
 }
 .tableData{
   font-weight: bold;
+  /*text-align: center;*/
 }

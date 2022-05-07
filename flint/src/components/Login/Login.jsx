@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "./Login.css";
+import AuthenticationService from "../../services/AuthenticationService";
 
 class Login extends Component {
 
@@ -28,6 +29,7 @@ class Login extends Component {
   }
   loginClicked () {
     if(this.state.username==='veer' && this.state.password==='admin') {
+      AuthenticationService.registerSuccessfulLogin();
       this.props.navigate(`/welcome/${this.state.username}`)
     } else {
       this.setState({showSuccessMessage:false})
@@ -43,7 +45,7 @@ console.log(this.state)
       <div className="container-fluid text-center" style={{position: 'relative', minHeight: '100vh'}}>
         <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'100vh'}}>
           <div className={'container'}>
-      <form className={"formBg"}>
+      <div className={"formBg"}>
         {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
 
         <h3>Sign In</h3>
@@ -77,7 +79,7 @@ console.log(this.state)
             Login
           </button>
         </div>
-      </form>
+      </div>
           </div>
         </div>
       </div>
