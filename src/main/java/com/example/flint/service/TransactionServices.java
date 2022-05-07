@@ -31,8 +31,8 @@ public class TransactionServices {
             Transaction transactionCopy = new Transaction();
             transaction.setTypeOfTransaction(TransactionType.DEBIT);
             transactionCopy.setTypeOfTransaction(TransactionType.CREDIT);
-            transactionCopy.setFromAccountNumber(transaction.getToAccountNumber());
-            transactionCopy.setToAccountNumber(transaction.getFromAccountNumber());
+            transactionCopy.setPrimaryAccountNumber(transaction.getSecondaryAccountNumber());
+            transactionCopy.setSecondaryAccountNumber(transaction.getPrimaryAccountNumber());
             transactionCopy.setDateOfTransaction(transaction.getDateOfTransaction());
             transactionCopy.setCategory(transaction.getCategory());
             transactionCopy.setTransactionAmount(transaction.getTransactionAmount());
@@ -58,11 +58,11 @@ public class TransactionServices {
                     if (transaction.getTransactionAmount() != null) {
                         existingTransactions.setTransactionAmount(transaction.getTransactionAmount());
                     }
-                    if (transaction.getToAccountNumber() != null) {
-                        existingTransactions.setToAccountNumber(transaction.getToAccountNumber());
+                    if (transaction.getSecondaryAccountNumber() != null) {
+                        existingTransactions.setSecondaryAccountNumber(transaction.getSecondaryAccountNumber());
                     }
-                    if (transaction.getFromAccountNumber() != null) {
-                        existingTransactions.setFromAccountNumber(transaction.getFromAccountNumber());
+                    if (transaction.getPrimaryAccountNumber() != null) {
+                        existingTransactions.setPrimaryAccountNumber(transaction.getPrimaryAccountNumber());
                     }
                     return existingTransactions;
                 })
@@ -163,9 +163,9 @@ public class TransactionServices {
         Transaction newTransaction = new Transaction();
         newTransaction.setTypeOfTransaction(transactionType);
         newTransaction.setTransactionAmount(amount);
-        newTransaction.setFromAccountNumber(account.getId());
+        newTransaction.setPrimaryAccountNumber(account.getId());
         newTransaction.setCategory(category);
-        newTransaction.setToAccountNumber(secondAccount.getId());
+        newTransaction.setSecondaryAccountNumber(secondAccount.getId());
         newTransaction.setUser(user); // can implement auto grab user
         return this.save(newTransaction);
     }
