@@ -28,8 +28,7 @@ class Login extends Component {
   }
   loginClicked () {
     if(this.state.username==='veer' && this.state.password==='admin') {
-      console.log("hello")
-      this.props.navigate(`/welcome`)
+      this.props.navigate(`/welcome/${this.state.username}`)
     } else {
       this.setState({showSuccessMessage:false})
       this.setState({hasLoginFailed:true})
@@ -46,7 +45,7 @@ console.log(this.state)
           <div className={'container'}>
       <form className={"formBg"}>
         {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-        {this.state.showSuccessMessage && <div>Login Successful</div>}
+
         <h3>Sign In</h3>
         <div className="mb-3">
           <label>Username</label>

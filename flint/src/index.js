@@ -16,6 +16,8 @@ import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import Welcome from "./components/Welcome";
 import withNavigation from "./components/WithNavigation";
+import withParams from "./components/WithParams";
+
 import Login from "./components/Login/Login";
 import Error from "./components/Error";
 
@@ -23,7 +25,8 @@ import Error from "./components/Error";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
-let LoginComponentWithNavigation = withNavigation(Login);
+let LoginWithNavigation = withNavigation(Login);
+let WelcomeWithParams = withParams(Welcome);
 root.render(
 <React.StrictMode>
     <BrowserRouter>
@@ -41,8 +44,8 @@ root.render(
         <Route path="/newaccount" element={<CreateAccount />} />
         <Route path="/withdraw" element={<Withdraw />} />
         <Route path="/transfer" element={<Transfer />} />
-        <Route path="/welcome" element={<Welcome />} />
-        <Route path="/login" element={<LoginComponentWithNavigation />} />
+        <Route path="/welcome/:name" element={<WelcomeWithParams />} />
+        <Route path="/login" element={<LoginWithNavigation />} />
         <Route path="*" element={<Error />} />
 
         </Routes>

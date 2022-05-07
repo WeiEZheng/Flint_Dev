@@ -11,7 +11,7 @@ class Welcome extends Component {
         <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'100vh'}}>
           <div className={'container'}>
             <Link to={""} ><img className={"container-fluid text-center"} src={homeLogo} alt={"The Flint logo: A flame"}/></Link>
-            <span className={'welcomeText'}> WELCOME to FLINT </span>
+            <span className={'welcomeText'}> WELCOME to FLINT, <br/>{this.props.params.name} </span>
           </div>
 
         </div>
