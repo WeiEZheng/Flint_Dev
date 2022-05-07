@@ -8,3 +8,17 @@
 }
 
 
+.tableHeader{
+  font-Size: 36px;
+
+}
+.table {
+  background: rgb(255,255,255, .3);
+  padding: 30px 30px 40px;
+
+  width: 100%;
+  height:100%
+}
+.tableData{
+  font-weight: bold;
+}
