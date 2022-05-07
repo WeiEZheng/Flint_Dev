@@ -45,8 +45,8 @@ class TransactionDetail extends React.Component {
         </dt>
         <dd>
         <td>
-            <Button tag={Link} to={`/bankaccount/${transactions.toAccountId}`} color="link" size="sm">
-                {transactions.toAccountId}
+            <Button tag={Link} to={`/bankaccount/${transactions.primaryAccountNumber}`} color="link" size="sm">
+                {transactions.primaryAccountNumber}
             </Button>
         </td>
         </dd>

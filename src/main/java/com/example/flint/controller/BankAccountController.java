@@ -85,7 +85,8 @@ public class BankAccountController {
     //deposit
     @PostMapping("/deposit")
     public ResponseEntity<Void> deposit(@RequestBody Transaction transaction) {
-        bankAccountServe.deposit(transaction.getToAccountNumber(), transaction.getTransactionAmount());
+        bankAccountServe.deposit(transaction.getPrimaryAccountNumber(),
+                transaction.getTransactionAmount());
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 

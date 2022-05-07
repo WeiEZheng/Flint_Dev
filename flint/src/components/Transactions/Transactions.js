@@ -46,7 +46,7 @@ class Transactions extends React.Component {
                 </td>
                 <td>{format(new Date(transaction.dateOfTransaction), 'yyyy/MM/dd kk:mm:ss')}</td>
                 <td>{transaction.typeOfTransaction}</td>
-                <td><Button tag={Link} to={`/bankaccount/${transaction.fromAccountNumber}`} color="link" size="sm">
+                <td><Button tag={Link} to={`/bankaccount/${transaction.primaryAccountNumber}`} color="link" size="sm">
                     {transaction.fromAccountNumber}
                   </Button></td>
                 <td>

@@ -84,7 +84,7 @@ public class TransactionServices {
     public List<Transaction> findByDateOfTransaction(
             Long accountId,
             Instant dateOfTransaction) {
-        return transactionRepository.findByFromAccountNumberAndDateOfTransaction(
+        return transactionRepository.findByPrimaryAccountNumberAndDateOfTransaction(
                 accountId,
                 dateOfTransaction);
     }
@@ -93,24 +93,24 @@ public class TransactionServices {
             Long accountId,
             Instant dateOfTransactionStart,
             Instant dateOfTransactionEnd) {
-        return transactionRepository.findByFromAccountNumberAndDateOfTransactionIsBetween(
+        return transactionRepository.findByPrimaryAccountNumberAndDateOfTransactionIsBetween(
                 accountId,
                 dateOfTransactionStart,
                 dateOfTransactionEnd);
     }
 
     public List<Transaction> findByFromAccountNumber(Long fromAccountNumber) {
-        return transactionRepository.findByFromAccountNumber(fromAccountNumber);
+        return transactionRepository.findByPrimaryAccountNumber(fromAccountNumber);
     }
 
     public List<Transaction> findByToAccountNumber(Long toAccountNumber) {
-        return transactionRepository.findByToAccountNumber(toAccountNumber);
+        return transactionRepository.findBySecondaryAccountNumber(toAccountNumber);
     }
 
     public List<Transaction> findByTypeOfTransaction(
             Long id,
             TransactionType typeOfTransaction) {
-        return transactionRepository.findByFromAccountNumberAndTypeOfTransaction(
+        return transactionRepository.findByPrimaryAccountNumberAndTypeOfTransaction(
                 id,
                 typeOfTransaction);
     }
@@ -118,7 +118,7 @@ public class TransactionServices {
     public List<Transaction> findByTransactionAmountIsBetween(Long id,
                                                               BigDecimal transactionAmountStart,
                                                               BigDecimal transactionAmountEnd) {
-        return transactionRepository.findByFromAccountNumberAndTransactionAmountIsBetween(
+        return transactionRepository.findByPrimaryAccountNumberAndTransactionAmountIsBetween(
                 id,
                 transactionAmountStart,
                 transactionAmountEnd);
@@ -127,13 +127,13 @@ public class TransactionServices {
     public List<Transaction> findByTransactionAmountIsGreaterThanEqual(
             Long id,
             BigDecimal transactionAmount) {
-        return transactionRepository.findByFromAccountNumberAndTransactionAmountIsGreaterThanEqual(id, transactionAmount);
+        return transactionRepository.findByPrimaryAccountNumberAndTransactionAmountIsGreaterThanEqual(id, transactionAmount);
     }
 
     public List<Transaction> findByTransactionAmountLessThanEqual(
             Long bankId,
             BigDecimal transactionAmount) {
-        return transactionRepository.findByFromAccountNumberAndTransactionAmountLessThanEqual(
+        return transactionRepository.findByPrimaryAccountNumberAndTransactionAmountLessThanEqual(
                 bankId,
                 transactionAmount);
     }
@@ -141,7 +141,7 @@ public class TransactionServices {
     public List<Transaction> findByCategory_Id(
             Long bankId,
             Long categoryId) {
-        return transactionRepository.findByFromAccountNumberAndCategory_Id(
+        return transactionRepository.findByPrimaryAccountNumberAndCategory_Id(
                 bankId,
                 categoryId);
     }
