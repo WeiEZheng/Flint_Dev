@@ -28,8 +28,13 @@ return (
           <li className="nav-item">
             <a className="nav-link" href="/expenseReport">Expense Report</a>
           </li>
+        </ul>
+        <ul className="navbar-nav justify-content-end">
           <li className="nav-item">
             <a className="nav-link" href="/login">Login</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/logout">Logout</a>
           </li>
         </ul>
       </div>

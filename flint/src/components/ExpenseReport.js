@@ -14,7 +14,7 @@ class ExpenseReport extends Component {
       expenses:
         [
           {id:1, name: "Fishing", amount: "50.52", category:"Vacation", date: "11/11/11"},
-          {id:2, name: "Ibiza w/ Anna Delvey 🤑",amount: "40532.53", category:"Vacation", date: "12/22/11"},
+          {id:2, name: "Ibiza w/ Anna Delvey 😵‍💫",amount: "40532.93", category:"Vacation", date: "12/22/11"},
           {id:3, name: "July Interest",amount: "340", category:"Student Loans", date: "11/21/11"}
 
         ]
@@ -98,17 +98,17 @@ class ExpenseReport extends Component {
                 </tr>
                 </thead>
                 <tbody>
-                  {
-                    this.state.expenses.map (
-                      expense =>
-                    <tr>
-                    <td className={"tableData"}>{expense.name}</td>
-                    <td className={"tableData"}>${expense.amount}</td>
-                      <td className={"tableData"}>{expense.category}</td>
-                      <td className={"tableData"}>{expense.date}</td>
-                    </tr>
-                    )
-                  }
+                {
+                  this.state.expenses.map (
+                    expense =>
+                      <tr>
+                        <td className={"tableData"}>{expense.name}</td>
+                        <td className={"tableData"}>${expense.amount}</td>
+                        <td className={"tableData"}>{expense.category}</td>
+                        <td className={"tableData"}>{expense.date}</td>
+                      </tr>
+                  )
+                }
                 </tbody>
               </table>
             </div>
