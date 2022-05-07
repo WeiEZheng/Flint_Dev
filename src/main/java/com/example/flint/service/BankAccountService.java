@@ -48,12 +48,13 @@ public class BankAccountService {
 
     //save
     public BankAccount save(BankAccount bankAccount) {
+        bankAccount = bankAccountRepo.save(bankAccount);
         Balances balance = new Balances();
         balance.setTimeStamp(Instant.now());
-        balance.setBankAccount(bankAccount);
+         balance.setBankAccount(bankAccount);
         balance.setBalances(bankAccount.getBalance());
         balanceService.saveBalance(balance);
-        return bankAccountRepo.save(bankAccount);
+        return bankAccount;
     }
 
     //Update a bank account
