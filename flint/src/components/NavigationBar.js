@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import brandLogo from './images/brandLogo.png';
 import {Link} from 'react-router-dom'
+import AuthenticationService from "../services/AuthenticationService";
 class NavigationBar extends Component {
 
 
@@ -34,7 +35,7 @@ return (
             <a className="nav-link" href="/login">Login</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/logout">Logout</a>
+            <a className="nav-link" href="/logout" onClick={AuthenticationService.logout}>Logout</a>
           </li>
         </ul>
       </div>
