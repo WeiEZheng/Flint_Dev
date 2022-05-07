@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import brandLogo from './images/brandLogo.png';
 import {Link} from 'react-router-dom'
+import AuthenticationService from "../services/AuthenticationService";
 class NavigationBar extends Component {
 
 
 render(){
+  const isLoggedIn = AuthenticationService.isLoggedIn();
 return (
   <nav className="navbar navbar-expand-lg navbar-dark" style={{color:'white', background:'rgb(0, 0, 0, .85)', position: 'relative', top:'0', width:'100%'}}>
     <div className="container-fluid" >
@@ -19,18 +21,23 @@ return (
           <li className="nav-item">
             <a className="nav-link active" aria-current="page" href="/">Home</a>
           </li>
-          <li className="nav-item">
+          {isLoggedIn && <li className="nav-item">
             <a className="nav-link" href="/bankaccount">Accounts</a>
-          </li>
-          <li className="nav-item">
+          </li>}
+          {isLoggedIn && <li className="nav-item">
             <a className="nav-link" href="/transactions">Transactions</a>
-          </li>
-          <li className="nav-item">
+          </li>}
+          {isLoggedIn && <li className="nav-item">
             <a className="nav-link" href="/expenseReport">Expense Report</a>
-          </li>
-          <li className="nav-item">
+          </li>}
+        </ul>
+        <ul className="navbar-nav navbar-collapse justify-content-end">
+          {(!isLoggedIn) && <li className="nav-item">
             <a className="nav-link" href="/login">Login</a>
-          </li>
+          </li>}
+          {isLoggedIn && <li className="nav-item">
+            <a className="nav-link" href="/logout" onClick={AuthenticationService.logout}>Logout</a>
+          </li>}
         </ul>
       </div>
     </div>

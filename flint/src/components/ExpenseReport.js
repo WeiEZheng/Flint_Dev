@@ -1,16 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Budget from './Budget';
 import Remaining from './Remaining';
 import AmountSpent from './AmountSpent';
 import './ExpenseReport.css';
 import { FormGroup } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import ExpenseTable from "./ExpenseTable";
 
 
-const ExpenseReport = () => {
+class ExpenseReport extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      expenses:
+        [
+          {id:1, name: "Fishing", amount: "50.52", category:"Vacation", date: "11/11/11"},
+          {id:2, name: "Ibiza w/ Anna Delvey 😵‍💫",amount: "40532.93", category:"Vacation", date: "12/22/11"},
+          {id:3, name: "July Interest",amount: "340", category:"Student Loans", date: "11/21/11"}
 
-  return (
+        ]
+    }
+  }
+  render(){
+    return (
       <div className={'expenseForm'}>
         <div className={'container'}>
           <h1 className={'mt-3'} style={{ fontFamily: 'Helvetica Neue', fontWeight: 'bold', color: 'black' }}>
@@ -29,7 +40,7 @@ const ExpenseReport = () => {
             </div>
             <form className="row g-3">
               <FormGroup>
-                <label for={'category'}>
+                <label htmlFor={'category'}>
                   <h3>Name:</h3>
                 </label>
                 <input
@@ -39,16 +50,15 @@ const ExpenseReport = () => {
                   type="text"
                   placeholder="Add Name of Expense..."
                   aria-label=".form-control-lg"
-                  onChange
                 />
               </FormGroup>
 
               <FormGroup>
-                <label for={'category'}>
+                <label htmlFor={'category'}>
                   <h3>Category:</h3>
                 </label>
                 <select name={'category'} id={'category'} className="form-select form-select-lg mb-3" aria-label="Default select example">
-                  <option selected>"Student Loans 🤡"</option>
+                  <option defaultValue>"Student Loans 🤡"</option>
                   <option value="1">Shopping 🤑</option>
                   <option value="2">Vacation 🛳</option>
                   <option value="3">Car Payment 🚗 </option>
@@ -56,7 +66,7 @@ const ExpenseReport = () => {
               </FormGroup>
 
               <FormGroup>
-                <label for={'dateOfExpense'}>
+                <label htmlFor={'dateOfExpense'}>
                   <h3>Date:</h3>
                 </label>
 
@@ -76,49 +86,37 @@ const ExpenseReport = () => {
                 </span>
               </FormGroup>
             </form>
-            <ExpenseTable />
+            <div className={'container'} >
+              <table className={'table'}>
+                <thead>
+                <tr className={"tableHeader"}>
+                  <th>Name:</th>
+                  <th>Amount:</th>
+                  <th>Category:</th>
+                  <th> Date:</th>
+                </tr>
+                </thead>
+                <tbody>
+                {
+                  this.state.expenses.map (
+                    expense =>
+                      <tr key = {expense.id}>
+                        <td className={"tableData"}>{expense.name}</td>
+                        <td className={"tableData"}>${expense.amount}</td>
+                        <td className={"tableData"}>{expense.category}</td>
+                        <td className={"tableData"}>{expense.date}</td>
+                      </tr>
+                  )
+                }
+                </tbody>
+              </table>
+            </div>
           </div>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
+;
 export default ExpenseReport;
 
-
-// import React, {Component} from 'react';
-//
-// class ExpenseReport extends Component{
-//
-//   state = {
-//     isLoading: true,
-//     Categories: []
-//   }
-//
-//   async componentDidMount(){
-//     const response = await fetch('api/categories')
-//     const body = await response.json();
-//     this.setState({Categories: body, isLoading:false});
-//   }
-//   render(){
-//     const{Categories, isLoading} = this.state;
-//     if(isLoading)
-//       return(<div>Loading...</div> );
-//
-//     return (
-//
-//       <div>
-//         {/*Every category should return a div*/}
-//         <h2>Categories</h2>
-//         {
-//           Categories.map(category =>
-//             <div id={category.id}>
-//               {category.name}
-//             </div>
-//           )
-//         }
-//       </div>
-//
-//     )
-//   }
-// }
-// export default ExpenseReport;
