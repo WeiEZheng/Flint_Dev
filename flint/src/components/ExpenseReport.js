@@ -40,7 +40,7 @@ class ExpenseReport extends Component {
             </div>
             <form className="row g-3">
               <FormGroup>
-                <label for={'category'}>
+                <label htmlFor={'category'}>
                   <h3>Name:</h3>
                 </label>
                 <input
@@ -50,16 +50,15 @@ class ExpenseReport extends Component {
                   type="text"
                   placeholder="Add Name of Expense..."
                   aria-label=".form-control-lg"
-                  onChange
                 />
               </FormGroup>
 
               <FormGroup>
-                <label for={'category'}>
+                <label htmlFor={'category'}>
                   <h3>Category:</h3>
                 </label>
                 <select name={'category'} id={'category'} className="form-select form-select-lg mb-3" aria-label="Default select example">
-                  <option selected>"Student Loans 🤡"</option>
+                  <option defaultValue>"Student Loans 🤡"</option>
                   <option value="1">Shopping 🤑</option>
                   <option value="2">Vacation 🛳</option>
                   <option value="3">Car Payment 🚗 </option>
@@ -67,7 +66,7 @@ class ExpenseReport extends Component {
               </FormGroup>
 
               <FormGroup>
-                <label for={'dateOfExpense'}>
+                <label htmlFor={'dateOfExpense'}>
                   <h3>Date:</h3>
                 </label>
 
@@ -101,7 +100,7 @@ class ExpenseReport extends Component {
                 {
                   this.state.expenses.map (
                     expense =>
-                      <tr>
+                      <tr key = {expense.id}>
                         <td className={"tableData"}>{expense.name}</td>
                         <td className={"tableData"}>${expense.amount}</td>
                         <td className={"tableData"}>{expense.category}</td>

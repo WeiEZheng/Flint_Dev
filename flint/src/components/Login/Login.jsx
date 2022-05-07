@@ -32,6 +32,7 @@ class Login extends Component {
     if(this.state.username==='veer' && this.state.password==='admin') {
       AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password);
       this.props.navigate(`/welcome/${this.state.username}`)
+
     } else {
       this.setState({showSuccessMessage:false})
       this.setState({hasLoginFailed:true})
@@ -76,7 +77,7 @@ console.log(this.state)
         <div className="mb-3">
         </div>
         <div className="d-grid">
-          <button type="button" className={"loginButton"} onClick={this.loginClicked} >
+          <button type={"button"} className={"loginButton"} onClick={this.loginClicked} >
             Login
           </button>
         </div>
