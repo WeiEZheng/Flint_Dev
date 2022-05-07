@@ -3,6 +3,7 @@ package com.example.flint.service;
 import com.example.flint.model.BankAccount;
 import com.example.flint.model.Category;
 import com.example.flint.model.Transaction;
+import com.example.flint.model.User;
 import com.example.flint.model.enumeration.TransactionType;
 import com.example.flint.repository.BankAccountRepository;
 import com.example.flint.repository.TransactionRepository;
@@ -30,8 +31,8 @@ public class TransactionServices {
             Transaction transactionCopy = new Transaction();
             transaction.setTypeOfTransaction(TransactionType.DEBIT);
             transactionCopy.setTypeOfTransaction(TransactionType.CREDIT);
-            transactionCopy.setFromAccountNumber(transaction.getToAccountNumber());
-            transactionCopy.setToAccountNumber(transaction.getFromAccountNumber());
+            transactionCopy.setPrimaryAccountNumber(transaction.getSecondaryAccountNumber());
+            transactionCopy.setSecondaryAccountNumber(transaction.getPrimaryAccountNumber());
             transactionCopy.setDateOfTransaction(transaction.getDateOfTransaction());
             transactionCopy.setCategory(transaction.getCategory());
             transactionCopy.setTransactionAmount(transaction.getTransactionAmount());
@@ -57,11 +58,11 @@ public class TransactionServices {
                     if (transaction.getTransactionAmount() != null) {
                         existingTransactions.setTransactionAmount(transaction.getTransactionAmount());
                     }
-                    if (transaction.getToAccountNumber() != null) {
-                        existingTransactions.setToAccountNumber(transaction.getToAccountNumber());
+                    if (transaction.getSecondaryAccountNumber() != null) {
+                        existingTransactions.setSecondaryAccountNumber(transaction.getSecondaryAccountNumber());
                     }
-                    if (transaction.getFromAccountNumber() != null) {
-                        existingTransactions.setFromAccountNumber(transaction.getFromAccountNumber());
+                    if (transaction.getPrimaryAccountNumber() != null) {
+                        existingTransactions.setPrimaryAccountNumber(transaction.getPrimaryAccountNumber());
                     }
                     return existingTransactions;
                 })
@@ -146,10 +147,26 @@ public class TransactionServices {
     }
 
     public Transaction create(TransactionType transactionType, BigDecimal amount, BankAccount account){
+        return this.create(transactionType, amount, account, null, null, null);
+    }
+
+    public Transaction create(TransactionType transactionType, BigDecimal amount, BankAccount account, Category category){
+        return this.create(transactionType, amount, account, category, null, null);
+    }
+
+    public Transaction create(TransactionType transactionType,
+                              BigDecimal amount,
+                              BankAccount account,
+                              Category category,
+                              BankAccount secondAccount,
+                              User user){
         Transaction newTransaction = new Transaction();
         newTransaction.setTypeOfTransaction(transactionType);
         newTransaction.setTransactionAmount(amount);
-        newTransaction.setToAccountNumber(account.getId());
+        newTransaction.setPrimaryAccountNumber(account.getId());
+        newTransaction.setCategory(category);
+        newTransaction.setSecondaryAccountNumber(secondAccount.getId());
+        newTransaction.setUser(user); // can implement auto grab user
         return this.save(newTransaction);
     }
 }
