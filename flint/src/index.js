@@ -22,6 +22,7 @@ import Error from "./components/Error";
 import withParams from "./components/WithParams";
 import Logout from "./components/Logout";
 import AuthenticationService from "./services/AuthenticationService";
+import AuthenticatedRoute from "./components/AuthenticatedRoute";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -40,15 +41,15 @@ root.render(
         <Routes>
         <Route path="/" element={<App />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/bankaccount" element={<BankAccounts />} />
-        <Route path="/expenseReport" element={<ExpenseReport />} />
-        <Route path="/transactions" element={<Transactions />} />
-        <Route path="/deposit" element={<Deposit />} />
+        <Route path="/bankaccount" element={<AuthenticatedRoute><BankAccounts /></AuthenticatedRoute>} />
+        <Route path="/expenseReport" element={<AuthenticatedRoute><ExpenseReport /></AuthenticatedRoute>} />
+        <Route path="/transactions" element={<AuthenticatedRoute><Transactions /></AuthenticatedRoute>} />
+        <Route path="/deposit" element={<AuthenticatedRoute><Deposit /></AuthenticatedRoute>} />
         <Route path="/newaccount" element={<CreateAccount />} />
-        <Route path="/withdraw" element={<Withdraw />} />
-        <Route path="/transfer" element={<Transfer />} />
+        <Route path="/withdraw" element={<AuthenticatedRoute><Withdraw /></AuthenticatedRoute>} />
+        <Route path="/transfer" element={<AuthenticatedRoute><Transfer /></AuthenticatedRoute>} />
         <Route path="/logout"  element={<Logout/>} />
-        <Route path="/welcome/:name" element={<WelcomeWithParams />} />
+        <Route path="/welcome/:name" element={<AuthenticatedRoute><WelcomeWithParams /></AuthenticatedRoute>} />
         <Route path="/login" element={<LoginWithNavigation />} />
         <Route path="*" element={<Error />} />
 

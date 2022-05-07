@@ -21,15 +21,15 @@ return (
           <li className="nav-item">
             <a className="nav-link active" aria-current="page" href="/">Home</a>
           </li>
-          <li className="nav-item">
+          {isLoggedIn && <li className="nav-item">
             <a className="nav-link" href="/bankaccount">Accounts</a>
-          </li>
-          <li className="nav-item">
+          </li>}
+          {isLoggedIn && <li className="nav-item">
             <a className="nav-link" href="/transactions">Transactions</a>
-          </li>
-          <li className="nav-item">
+          </li>}
+          {isLoggedIn && <li className="nav-item">
             <a className="nav-link" href="/expenseReport">Expense Report</a>
-          </li>
+          </li>}
         </ul>
         <ul className="navbar-nav navbar-collapse justify-content-end">
           {(!isLoggedIn) && <li className="nav-item">
