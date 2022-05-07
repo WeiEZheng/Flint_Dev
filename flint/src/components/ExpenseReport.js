@@ -1,17 +1,28 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Budget from './Budget';
 import Remaining from './Remaining';
 import AmountSpent from './AmountSpent';
+import './ExpenseReport.css';
 import { FormGroup } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 
-const ExpenseReport = () => {
+class ExpenseReport extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      expenses:
+        [
+          {id:1, name: "Fishing", amount: "50.52", category:"Vacation", date: "11/11/11"},
+          {id:2, name: "Ibiza w/ Anna Delvey 😵‍💫",amount: "40532.93", category:"Vacation", date: "12/22/11"},
+          {id:3, name: "July Interest",amount: "340", category:"Student Loans", date: "11/21/11"}
 
-  return (
-
-    <div style={{ backgroundImage: 'linear-gradient(#ff8a00, #e52e71)' }}>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        ]
+    }
+  }
+  render(){
+    return (
+      <div className={'expenseForm'}>
         <div className={'container'}>
           <h1 className={'mt-3'} style={{ fontFamily: 'Helvetica Neue', fontWeight: 'bold', color: 'black' }}>
             {' '}
@@ -57,7 +68,7 @@ const ExpenseReport = () => {
 
               <FormGroup>
                 <label for={'dateOfExpense'}>
-                  <h3>Date of Expense:</h3>
+                  <h3>Date:</h3>
                 </label>
 
               </FormGroup>
@@ -76,49 +87,37 @@ const ExpenseReport = () => {
                 </span>
               </FormGroup>
             </form>
+            <div className={'container'} >
+              <table className={'table'}>
+                <thead>
+                <tr className={"tableHeader"}>
+                  <th>Name:</th>
+                  <th>Amount:</th>
+                  <th>Category:</th>
+                  <th> Date:</th>
+                </tr>
+                </thead>
+                <tbody>
+                {
+                  this.state.expenses.map (
+                    expense =>
+                      <tr>
+                        <td className={"tableData"}>{expense.name}</td>
+                        <td className={"tableData"}>${expense.amount}</td>
+                        <td className={"tableData"}>{expense.category}</td>
+                        <td className={"tableData"}>{expense.date}</td>
+                      </tr>
+                  )
+                }
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
+;
 export default ExpenseReport;
 
-
-// import React, {Component} from 'react';
-//
-// class ExpenseReport extends Component{
-//
-//   state = {
-//     isLoading: true,
-//     Categories: []
-//   }
-//
-//   async componentDidMount(){
-//     const response = await fetch('api/categories')
-//     const body = await response.json();
-//     this.setState({Categories: body, isLoading:false});
-//   }
-//   render(){
-//     const{Categories, isLoading} = this.state;
-//     if(isLoading)
-//       return(<div>Loading...</div> );
-//
-//     return (
-//
-//       <div>
-//         {/*Every category should return a div*/}
-//         <h2>Categories</h2>
-//         {
-//           Categories.map(category =>
-//             <div id={category.id}>
-//               {category.name}
-//             </div>
-//           )
-//         }
-//       </div>
-//
-//     )
-//   }
-// }
-// export default ExpenseReport;

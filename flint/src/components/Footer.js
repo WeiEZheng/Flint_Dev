@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div >
       <footer className={"footer"}>
-        All Rights Reserved 2022 © FLINT
+        © 2022 FLINT. All Rights Reserved.
       </footer>
     </div>
   );

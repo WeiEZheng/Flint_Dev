@@ -1,26 +1,89 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import "./Login.css";
+
 class Login extends Component {
+
   constructor(props){
     super(props)
-
     this.state = {
-      username : "",
-      password : ""
+      username:"",
+      password:"",
+      showFailMessage: false,
+      showSuccessMessage: false
     }
+    this.handleUsernameChange = this.handleUsernameChange.bind(this)
+    this.handlePasswordChange = this.handlePasswordChange.bind(this)
+    this.loginClicked = this.loginClicked.bind(this)
   }
-handleChange = (event) => {
-    console.log(event.target.name);
-    this.setState({[event.target.name]:event.target.value})
+
+  handleUsernameChange (event) {
+    this.setState({
+      username:event.target.value
+    })
   }
-  render(){
-    return(
-      <form className={"login"} >
-        <span className={"inputBox"}> Username: <input type={"text"}  className={"username"} defaultValue={this.state.username} onChange={this.handleChange} autoComplete={"on"} /></span>
-      <span className={"inputBox"}> Password: <input type={"password"}  className={"password"} defaultValue={this.state.password} onChange={this.handleChange} autoComplete={"on"} /> </span>
-        <button className={"loginButton"}> Login </button>
+  handlePasswordChange (event) {
+    this.setState({
+      password:event.target.value
+    })
+  }
+  loginClicked () {
+    if(this.state.username==='veer' && this.state.password==='admin') {
+      this.props.navigate(`/welcome/${this.state.username}`)
+    } else {
+      this.setState({showSuccessMessage:false})
+      this.setState({hasLoginFailed:true})
+    }
+
+console.log(this.state)
+
+  }
+
+  render() {
+    return (
+      <div className="container-fluid text-center" style={{position: 'relative', minHeight: '100vh'}}>
+        <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'100vh'}}>
+          <div className={'container'}>
+      <form className={"formBg"}>
+        {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+
+        <h3>Sign In</h3>
+        <div className="mb-3">
+          <label>Username</label>
+          <input
+            onChange={this.handleUsernameChange}
+            type="text"
+            className="form-control"
+            placeholder="Enter username"
+            defaultValue=""
+            autoComplete ='off'
+
+          />
+        </div>
+        <div className="mb-3">
+          <label>Password</label>
+          <input
+            onChange={this.handlePasswordChange}
+            type="password"
+            className="form-control"
+            placeholder="Enter password"
+            defaultValue=""
+            autoComplete ='off'
+          />
+        </div>
+        <div className="mb-3">
+        </div>
+        <div className="d-grid">
+          <button className={"loginButton"} onClick={this.loginClicked}>
+            Login
+          </button>
+        </div>
       </form>
+          </div>
+        </div>
+      </div>
     )
   }
 }
 export default Login
+
+

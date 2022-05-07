@@ -12,13 +12,17 @@ import Transfer from './components/AccountComp/Transfer';
 import CreateAccount from './components/AccountComp/CreateAccount';
 import Withdraw from './components/AccountComp/Withdraw';
 import TransactionDetail from './components/Transactions/Transaction.Details';
+import Login from "./components/Login/Login";
+import {Link} from "react-router-dom";
+import homeLogo from './components/images/test.png';
 
 
 const App = () => {
   return (
-    <div style={{ backgroundImage: 'linear-gradient(#ff8a00, #e52e71)', position: 'relative', minHeight: '100vh' }}>
-      <NavigationBar />
-
+    <div className="container-fluid text-center" style={{position: 'relative', minHeight: '100vh'}}>
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'100vh'}}>
+        <div className={'container'}>
+      <Link to={"login"} ><img className={"container-fluid text-center"} src={homeLogo} alt={"The Flint logo: A flame"}/></Link>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/bankaccount" element={<BankAccounts />} />
@@ -30,8 +34,8 @@ const App = () => {
           <Route path="/withdraw" element={<Withdraw />} />
           <Route path="/transfer" element={<Transfer />} />
         </Routes>
-
       <Footer />
+        </div>
     </div>
   );
 };
