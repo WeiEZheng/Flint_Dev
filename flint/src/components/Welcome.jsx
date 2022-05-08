@@ -14,12 +14,6 @@ class Welcome extends Component {
           <div className={'container'}>
             <Link to={""} ><img className={"container-fluid text-center"} src={homeLogo} alt={"The Flint logo: A flame"}/></Link>
             <span className={'welcomeText'}> WELCOME to FLINT, <br/>{this.props.params.name} </span>
-          <div className={'container'}>
-            <button className={'btn btn-success'}onClick={this.retrieveBudgets}>Get message</button>
-          </div>
-            <div className={'container'}>
-              {this.state.testAxios.map(expense => expense.dateOfExpense)}
-            </div>
           </div>
 
         </div>
