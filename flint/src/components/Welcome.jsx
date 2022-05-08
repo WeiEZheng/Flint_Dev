@@ -5,15 +5,7 @@ import './Welcome.css';
 import ExpenseReportService from "../api/ExpenseReportService";
 
 class Welcome extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      testAxios: []
-    }
 
-    this.retrieveBudgets = this.retrieveBudgets.bind(this)
-    this.handleSuccessfulResponse = this.handleSuccessfulResponse.bind(this)
-  }
   render() {
     return (
 
@@ -26,7 +18,7 @@ class Welcome extends Component {
             <button className={'btn btn-success'}onClick={this.retrieveBudgets}>Get message</button>
           </div>
             <div className={'container'}>
-              {this.state.testAxios.map(expense => expense.nameOfExpense)}
+              {this.state.testAxios.map(expense => expense.dateOfExpense)}
             </div>
           </div>
 
@@ -35,15 +27,6 @@ class Welcome extends Component {
 
     );
 
-  }
-  retrieveBudgets(){
-    ExpenseReportService.executeExpenseReportService()
-      .then(response => this.handleSuccessfulResponse(response))
-      .catch(response => console.log(response.status))
-
-  }
-  handleSuccessfulResponse(response){
-    this.setState({testAxios:response.data})
   }
 }
 

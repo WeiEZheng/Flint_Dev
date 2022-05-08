@@ -12,14 +12,11 @@ class ExpenseReport extends Component {
   constructor(props){
     super(props)
     this.state = {
-      expenses:
-        [
-          {id:1, name: "Fishing", amount: "50.52", category:"Vacation", date: "11/11/11"},
-          {id:2, name: "Ibiza w/ Anna Delvey 😵‍💫",amount: "40532.93", category:"Vacation", date: "12/22/11"},
-          {id:3, name: "July Interest",amount: "340", category:"Student Loans", date: "11/21/11"}
-
-        ]
+      grabBudgets: []
     }
+
+    this.retrieveBudgets = this.retrieveBudgets.bind(this)
+    this.handleSuccessfulResponse = this.handleSuccessfulResponse.bind(this)
   }
   render(){
     return (
@@ -88,6 +85,9 @@ class ExpenseReport extends Component {
               </FormGroup>
             </form>
             <div className={'container'} >
+              <div className={'container'}>
+                <button className={'btn btn-success'}onClick={this.retrieveBudgets}>Generate my Report</button>
+              </div>
               <table className={'table'}>
                 <thead>
                 <tr className={"tableHeader"}>
@@ -99,13 +99,13 @@ class ExpenseReport extends Component {
                 </thead>
                 <tbody>
                 {
-                  this.state.expenses.map (
+                  this.state.grabBudgets.map (
                     expense =>
                       <tr key = {expense.id}>
-                        <td className={"tableData"}>{expense.name}</td>
-                        <td className={"tableData"}>${expense.amount}</td>
-                        <td className={"tableData"}>{expense.category}</td>
-                        <td className={"tableData"}>{expense.date}</td>
+                        <td className={"tableData"}>{expense.nameOfExpense}</td>
+                        <td className={"tableData"}>{expense.amountSpent}</td>
+                        <td className={"tableData"}>{expense.categoryId}</td>
+                        <td className={"tableData"}>{expense.dateOfExpense}</td>
                       </tr>
                   )
                 }
@@ -118,7 +118,15 @@ class ExpenseReport extends Component {
     );
   }
 
+  retrieveBudgets(){
+    ExpenseReportService.executeExpenseReportService()
+      .then(response => this.handleSuccessfulResponse(response))
+      .catch(response => console.log(response.status))
 
+  }
+  handleSuccessfulResponse(response){
+    this.setState({grabBudgets:response.data})
+  }
 }
 ;
 export default ExpenseReport;
