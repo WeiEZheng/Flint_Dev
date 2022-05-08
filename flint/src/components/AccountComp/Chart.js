@@ -4,31 +4,26 @@ import axios from 'axios';
 
 
 
-const Chart = () => {
-  const [data, setData] = useState('');
+class Chart extends React.Component{
+  state = {
+    isLoading: true,
+    balances: [],
+  };
 
-  useEffect(() => {
-    getAllBalances();
-  }, []);
-  
-  const getAllBalances = () => {
-    axios.get('api/balances/1')
-      .then((response) => {
-        const allData = response.data.allData;
-        setData(allData);
-        console.log(data);
-      })
-      .catch((err) => console.error(`Error: ${err}`));
+  async componentDidMount() {
+    const response = await fetch('api/balances/1');
+    const body = await response.json();
+    this.setState({ balances: body, isLoading: false });
   }
   
 
-
-  
-    return (
+ render() {
+  return (
+      <div className="container">
       <LineChart
-        width={500}
-        height={300}
-        data={data}
+        width={800}
+        height={400}
+        data={this.state.balances}
         margin={{
           top: 5,
           right: 30,
@@ -36,14 +31,20 @@ const Chart = () => {
           bottom: 5,
         }}
       >
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis dataKey="timeStamp"
+          tickCount={5}
+        />
+        <YAxis
+        tickCount={10}/>
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#FFFF00" strokeWidth={2} activeDot={{ r: 8 }} />
-        <Line type="monotone" dataKey="uv" stroke="#800080" strokeWidth={2} />
+        <Line type="monotone" dataKey="balances" stroke="#FFFF00" strokeWidth={2} activeDot={{ r: 8 }} />
+        
       </LineChart>
+      </div>
     );
-  }
+ }
+}
 
 export default Chart;
+
