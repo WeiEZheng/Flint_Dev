@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @Table(name = "budget_tool")
 public class BudgetTool implements Serializable {
 
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -22,11 +23,8 @@ public class BudgetTool implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "original_budget", precision = 21, scale = 2)
-    private BigDecimal originalBudget;
-
-    @Column(name = "remaining_budget", precision = 21, scale = 2)
-    private BigDecimal remainingBudget = originalBudget;
+    @Column(name = "user")
+    private String user;
 
     @Column(name = "amount_spent", precision = 21, scale = 2)
     private BigDecimal amountSpent;
@@ -40,7 +38,15 @@ public class BudgetTool implements Serializable {
     @ManyToOne
     private Category category;
 
-    public void setRemainingBudget(BigDecimal remainingBudget) {
-        this.remainingBudget = remainingBudget.subtract(amountSpent);
+    @Override
+    public String toString() {
+        return "BudgetTool{" +
+            "id=" + id +
+            ", user=" + user +
+            ", amountSpent=" + amountSpent +
+            ", nameOfExpense='" + nameOfExpense + '\'' +
+            ", dateOfExpense=" + dateOfExpense +
+            ", category=" + category +
+            '}';
     }
 }
