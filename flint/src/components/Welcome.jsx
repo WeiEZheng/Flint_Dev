@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import homeLogo from './images/test.png';
 import {Link} from 'react-router-dom';
 import './Welcome.css';
-import ExpenseReportService from "../api/ExpenseReportService";
 
 class Welcome extends Component {
 

@@ -11,13 +11,14 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/api")
-@CrossOrigin(origins="http://localhost:3000")
+@RequestMapping("/users")
 
+@CrossOrigin(origins="http://localhost:3000")
 public class BudgetToolController {
 
         private BudgetToolRepository budgetRepository;
@@ -36,14 +37,20 @@ public class BudgetToolController {
         ResponseEntity<?> getBudgetItem(@PathVariable Long id){
             log.info("Getting category item by {}", id);
 
-            Optional<BudgetTool> category = budgetRepository.findById(id);
-            return ((Optional<?>) category).map(response -> ResponseEntity.ok().body(response))
+            Optional<BudgetTool> expense = budgetRepository.findById(id);
+            return ((Optional<?>) expense).map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        }
+        @GetMapping("/{user}/budget_tool")
+        Collection<BudgetTool> getBudgetItem(@PathVariable String user){
+            log.info("Getting all Budget Items for {}", user);
+
+            return budgetRepository.findByUser(user);
         }
         @PostMapping("/budget_tool")
         ResponseEntity<BudgetTool> createCategory(@Valid @RequestBody BudgetTool budgetItem) throws URISyntaxException {
             BudgetTool result=budgetRepository.save(budgetItem);
-            return ResponseEntity.created(new URI("/api/budget_tool" + result.getId())).body(result);
+            return ResponseEntity.created(new URI("/users/budget_tool" + result.getId())).body(result);
         }
 
         @PutMapping("/budget_tool/{id}")
