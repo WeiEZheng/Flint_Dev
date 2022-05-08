@@ -6,7 +6,7 @@ import "./index.css";
 import Home from "./components/Home";
 import BankAccounts from "./components/AccountComp/BankAccounts";
 import ExpenseReport from "./components/ExpenseReport";
-import Transactions from "./components/Transactions";
+import Transactions from "./components/Transactions/Transactions";
 import Deposit from "./components/AccountComp/Deposit";
 import CreateAccount from "./components/AccountComp/CreateAccount";
 import Withdraw from "./components/AccountComp/Withdraw";
