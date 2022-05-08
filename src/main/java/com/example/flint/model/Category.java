@@ -23,4 +23,8 @@ public class Category implements Serializable {
 
     @OneToMany
     private Set<Transaction> transaction;
+
+    @OneToMany
+    private Set<BudgetTool> expense;
+
 }

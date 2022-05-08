@@ -12,7 +12,8 @@ import CreateAccount from "./components/AccountComp/CreateAccount";
 import Withdraw from "./components/AccountComp/Withdraw";
 import Transfer from "./components/AccountComp/Transfer";
 import NavigationBar from "./components/NavigationBar";
-
+import AuthenticatedRoute from "./components/AuthenticatedRoute";
+import Logout from "./components/Logout";
 import Footer from "./components/Footer";
 import Welcome from "./components/Welcome";
 import withNavigation from "./components/WithNavigation";
@@ -21,8 +22,7 @@ import Login from "./components/Login/Login";
 import Error from "./components/Error";
 import withParams from "./components/WithParams";
 import AuthenticationService from "./services/AuthenticationService";
-import AuthenticatedRoute from "./components/AuthenticatedRoute";
-import Logout from "./components/Logout";
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

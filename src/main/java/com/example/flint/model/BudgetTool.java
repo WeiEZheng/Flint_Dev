@@ -37,6 +37,9 @@ public class BudgetTool implements Serializable {
     @Column(name = "date_of_expense")
     private LocalDate dateOfExpense;
 
+    @ManyToOne
+    private Category category;
+
     public void setRemainingBudget(BigDecimal remainingBudget) {
         this.remainingBudget = remainingBudget.subtract(amountSpent);
     }

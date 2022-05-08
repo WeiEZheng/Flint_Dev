@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import homeLogo from './images/test.png';
 import {Link} from 'react-router-dom';
 import './Welcome.css';
+import ExpenseReportService from "../api/ExpenseReportService";
 
 class Welcome extends Component {
   render() {
@@ -12,6 +13,10 @@ class Welcome extends Component {
           <div className={'container'}>
             <Link to={""} ><img className={"container-fluid text-center"} src={homeLogo} alt={"The Flint logo: A flame"}/></Link>
             <span className={'welcomeText'}> WELCOME to FLINT, <br/>{this.props.params.name} </span>
+          <div className={'container'}>
+            <button className={'btn btn-success'}onClick={this.retrieveBudgets}>Get message</button>
+
+          </div>
           </div>
 
         </div>
@@ -19,6 +24,10 @@ class Welcome extends Component {
 
     );
 
+  }
+  retrieveBudgets(){
+    ExpenseReportService.executeExpenseReportService()
+      .then(response => console.log(response))
   }
 }
 
