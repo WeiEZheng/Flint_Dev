@@ -24,7 +24,7 @@ public class TransactionServices {
     @Autowired
     private BankAccountRepository bankAccountRepository;
 
-
+    //save
     public Transaction save(Transaction transaction) {
         transaction.setDateOfTransaction(Instant.now());
         if (transaction.getTypeOfTransaction().equals(TransactionType.TRANSFER)){
